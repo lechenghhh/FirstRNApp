@@ -2,6 +2,7 @@
  * Created by Cheng on 2017/3/5.
  */
 /**
+ * setup被index.ios.js 和 index..android.js 一同指向，作为整个项目的入口
  * Sample React Native App
  * https://github.com/facebook/react-native
  * @flow
