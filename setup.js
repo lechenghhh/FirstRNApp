@@ -18,6 +18,7 @@ import {
     View
 } from 'react-native';
 import HelloComponent from './MyComponent';
+import LifeCycleComponent from './LifeCycleComponent';
 
 export default class setup extends Component {
     render() {
@@ -34,6 +35,9 @@ export default class setup extends Component {
                     Cmd+D or shake for dev menu
                 </Text>
                 <HelloComponent/>
+
+                <LifeCycleComponent/>
+
             </View>
         );
     }
