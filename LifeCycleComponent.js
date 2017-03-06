@@ -6,7 +6,8 @@ import {
     AppRegistry,
     StyleSheet,
     Text,
-    View
+    View,
+    Image,
 } from 'react-native';
 
 export default class LifeCycleComponent extends Component {
@@ -28,7 +29,6 @@ export default class LifeCycleComponent extends Component {
                         })
                   }}>点击累加器</Text>
             <Text style={{fontSize:20,backgroundColor:'white'}}>数字是：{this.state.count}(单位：个)</Text>
-
         </View>
     }
 }

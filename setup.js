@@ -15,7 +15,9 @@ import {
     AppRegistry,
     StyleSheet,
     Text,
-    View
+    View,
+    Image,
+    ScrollView,
 } from 'react-native';
 import HelloComponent from './MyComponent';
 import LifeCycleComponent from './LifeCycleComponent';
@@ -23,43 +25,47 @@ import LifeCycleComponent from './LifeCycleComponent';
 export default class setup extends Component {
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.welcome}>
-                    Welcome to React Native!
-                </Text>
-                <Text style={styles.instructions}>
-                    To get started, edit index.ios.js
-                </Text>
-                <Text style={styles.instructions}>
-                    Press Cmd+R to reload,{'\n'}
-                    Cmd+D or shake for dev menu
-                </Text>
-                <HelloComponent/>
-
-                <LifeCycleComponent/>
-
-            </View>
+            <ScrollView contentContainerStyle={styles.contentContainer}>
+                <View style={styles.container}>
+                    <Text style={styles.welcome}>
+                        Welcome to React Native!
+                    </Text>
+                    <HelloComponent/>
+                    <LifeCycleComponent/>
+                    {/*<Textinput></Textinput>*/}
+                    <Image style={{width:200,height:120}}
+                           source={{uri:'https://img3.doubanio.com/view/dale-online/dale_ad/public/38cc50559ee9d78.jpg'}}></Image>
+                    <Image style={{width:300,height:240}}
+                           source={{uri:'http://ww4.sinaimg.cn/mw690/d0a5385bjw1fcvq1fzsavj218w0u04qp.jpg'}}></Image>
+                </View>
+            </ScrollView>
         );
     }
 }
 //
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#1f82bb',
-        marginTop: 50,
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
-    /**/
+        container: {
+            flex: 1,
+            backgroundColor: '#1f82bb',
+            marginTop: 50,
+        },
+        welcome: {
+            fontSize: 20,
+            textAlign: 'center',
+            margin: 10,
+        },
+        instructions: {
+            textAlign: 'center',
+            color: '#333333',
+            marginBottom: 5,
+        },
 
-});
+        contentContainer: {
+            paddingVertical: 20
+        },
+
+        /**/
+
+    })
+    ;
 
