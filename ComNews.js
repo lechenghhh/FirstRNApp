@@ -25,15 +25,24 @@ export default class ComNews extends Component {
         super(props)
         this.state = {
             dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),                             //list数据源2
-            type: 'sport',
+            type: 'tech',
             jsonStr: '',
-            str2: '',
+            str2: new Array('war', 'sport', 'tech', 'edu', 'ent', 'money', 'travel', 'gupiao', 'lady'),
+            i: 2,
         };
+    }
+
+    componentDidMount() {
+        this.getMoviesFromApiAsync();           //每次创建的时候自动加载
+    }
+
+    componentDidUpdate() {
+        this.getMoviesFromApiAsync();           //每次创建的时候自动加载
     }
 
     getMoviesFromApiAsync() {       //Http异步请求
         fetch('http://wangyi.butterfly.mopaasapp.com/news/api?type='
-            + this.state.str2
+            + this.state.type
             + '&page=1&limit=10')
             .then((response) => response.json())
             .then((responseJson) => {
@@ -53,14 +62,14 @@ export default class ComNews extends Component {
         return (
             <View style={styles.container}>
                 <View style={{flexDirection:'row',}}>
-                    <Text style={{backgroundColor:'#F43E06',flex:1,color:"#ffffff"}}>网易新闻</Text>
+                    <Text style={{backgroundColor:'#F43E06',flex:1,color:"#ffffff"}}>网易新闻-{this.state.type}</Text>
                 </View>
                 <ScrollView contentContainerStyle={styles.contentContainer}>
                     <ListView
                         style={{margin:4}}
                         dataSource={this.state.dataSource}
                         renderRow={(rowData) =>
-                            <View style={{flexDirection:'row',margin:4,padding: 2,}}>
+                            <View style={{flexDirection:'row',margin:2,padding: 4,}}>
                                 <Image style={{height:60,width:40}}
                                         source={{uri:rowData.imgurl}}>
                                 </Image>
@@ -74,7 +83,24 @@ export default class ComNews extends Component {
                         }/>
                     {/*<Text>请求结果是：{this.state.jsonStr}</Text>*/}
                 </ScrollView>
+                {/*<TextInput*/}
+                    {/*style={{height: 40, borderColor: '#279c41',borderWidth: 1,*/}
+                        {/*borderRadius:4,marginLeft:12,marginRight:12}}*/}
+                    {/*onChangeText={(type) =>this.setState({type})}*/}
+                    {/*value={this.state.type}/>*/}
                 <View style={{flexDirection:'row',}}>
+                    <TouchableHighlight
+                        style={styles.btn}
+                        underlayColor="rgb(33, 222, 155)"
+                        activeOpacity={0.5}
+                        onPress={()=>{
+                            this.setState({
+                                type:this.state.str2[this.state.i],
+                                i:this.state.i+1,
+                            })
+                        }}>
+                        <Text style={{color: '#F5FCFF',fontSize:20}}>上一个</Text>
+                    </TouchableHighlight>
                     <TouchableHighlight
                         style={styles.btn}
                         underlayColor="rgb(33, 222, 155)"
@@ -84,11 +110,19 @@ export default class ComNews extends Component {
                         )}>
                         <Text style={{color: '#F5FCFF',fontSize:20}}>刷新</Text>
                     </TouchableHighlight>
-                    <TextInput
-                        style={{flex:1,height: 40, borderColor: '#279c41',borderWidth: 1,
-                        borderRadius:4,marginLeft:12,marginRight:12}}
-                        onChangeText={(str2) =>this.setState({str2})}
-                        value={this.state.str2}/>
+                    <TouchableHighlight
+                        style={styles.btn}
+                        underlayColor="rgb(33, 222, 155)"
+                        activeOpacity={0.5}
+                        onPress={()=>{
+                            this.setState({
+                                type:this.state.str2[this.state.i],
+                                i:this.state.i+1,
+                            })
+                        }}>
+                        <Text style={{color: '#F5FCFF',fontSize:20}}>下一个</Text>
+                    </TouchableHighlight>
+
                     {/*<TouchableHighlight*/}
                     {/*style={styles.btn}*/}
                     {/*underlayColor="rgb(33, 222, 155)"*/}
