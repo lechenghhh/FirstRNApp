@@ -10,8 +10,7 @@ import {
     Image,
 } from 'react-native';
 
-export default class LifeCycleComponent extends Component {
-
+export default class ComLifeCycle extends Component {
 
     constructor(props) {
         super(props);
