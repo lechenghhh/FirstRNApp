@@ -17,6 +17,8 @@ import {
     Image,
     TextInput,
     TouchableHighlight,
+    AlertIOS,
+
 } from 'react-native';
 
 
@@ -27,7 +29,7 @@ export default class ComNews extends Component {
             dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),                             //list数据源2
             type: 'tech',
             jsonStr: '',
-            str2: new Array('war', 'sport', 'tech', 'edu', 'ent', 'money', 'travel', 'gupiao', 'lady'),
+            str2: new Array('war', 'tech', 'sport', 'edu', 'ent', 'money', 'travel', 'gupiao', 'lady'),
             i: 2,
         };
     }
@@ -36,9 +38,9 @@ export default class ComNews extends Component {
         this.getMoviesFromApiAsync();           //每次创建的时候自动加载
     }
 
-    componentDidUpdate() {
-        this.getMoviesFromApiAsync();           //每次创建的时候自动加载
-    }
+    // componentDidUpdate() {
+    //     this.getMoviesFromApiAsync();           //每次创建的时候自动加载
+    // }
 
     getMoviesFromApiAsync() {       //Http异步请求
         fetch('http://wangyi.butterfly.mopaasapp.com/news/api?type='
@@ -73,21 +75,15 @@ export default class ComNews extends Component {
                                 <Image style={{height:60,width:40}}
                                         source={{uri:rowData.imgurl}}>
                                 </Image>
-                                <View style={{flex:1,backgroundColor:"#1b1d1d",margin:4,padding: 2,border:0.4}}>
-                                    <Text style={{color:"#f4f4f0",fontsize:28}} onPress={()=>{
-                                        ToastAndroid.LONG,rowData.title
+                                <View style={{backgroundColor:'#1b1d1d',flex:1,marginLeft:6,justifyContent:'space-around'}}>
+                                    <Text style={{color:"#cef4e3",flexWrap:'wrap'}} onPress={()=>{
                                     }}>{rowData.title}</Text>
-                                    <Text style={{color:"#444444"}}>{rowData.time}</Text>
+                                    <Text style={{color:"#82a1a8"}}>{rowData.time}</Text>
                                 </View>
                             </View>
                         }/>
                     {/*<Text>请求结果是：{this.state.jsonStr}</Text>*/}
                 </ScrollView>
-                {/*<TextInput*/}
-                    {/*style={{height: 40, borderColor: '#279c41',borderWidth: 1,*/}
-                        {/*borderRadius:4,marginLeft:12,marginRight:12}}*/}
-                    {/*onChangeText={(type) =>this.setState({type})}*/}
-                    {/*value={this.state.type}/>*/}
                 <View style={{flexDirection:'row',}}>
                     <TouchableHighlight
                         style={styles.btn}

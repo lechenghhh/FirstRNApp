@@ -21,10 +21,10 @@ import {
     Textinput,
 } from 'react-native';
 // import ComLifeCycle from './ComLifeCycle';
-import ComLogin from './ComLogin';
-import ComHttp from './ComHttp';
-import ComNews from './ComNews'
-import ComWebView from './ComWebView'
+import ComLogin from './js/component/ComLogin';
+import ComHttp from './js/component/ComHttp';
+import ComNews from './js/component/ComNews'
+import ComWebView from './js/component/ComWebView'
 
 export default class setup extends Component {
     render() {
