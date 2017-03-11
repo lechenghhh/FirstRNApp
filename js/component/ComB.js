@@ -25,6 +25,15 @@ export default class Com_b extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <View style={{flexDirection:'row',}}>
+                    <Text style={{backgroundColor:'#F43E06',flex:1,color:"#ffffff",padding:2,}}
+                          onPress={()=>{
+                        const{navigator} = this.props;
+                        if (navigator){
+                            navigator.pop();
+                        }
+                    }}>网易新闻 - </Text>
+                </View>
                 <Text style={{width:this.state.size,height:this.state.size,backgroundColor:'#f46201'}}>
                     数值{this.state.position}
                 </Text>
@@ -40,7 +49,14 @@ export default class Com_b extends Component {
                         position:this.state.position+1,
                     })
                 }}>变大</Text>
-
+                <Text onPress={()=>{
+                    const{navigator} = this.props;
+                    if (navigator){
+                        navigator.push({
+                            name:'ComC'
+                        })
+                    }
+                }}>跳转按钮，与上面无关</Text>
 
             </View>
         );

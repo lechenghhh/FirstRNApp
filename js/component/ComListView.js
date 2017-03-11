@@ -1,60 +1,53 @@
 /**
- * Created by 乐城 on 2017/3/6.
+ * Created by 乐城 on 2017/3/7.
  */
-//获取其他控件的数值的demo
-/*import ComA from './ComA'
- import ComB from './ComB'
- import ComC from './ComC'
- import ComLog from './ComLog'
- import FetchG from './FetchG'
- import ComHttp from './ComHttp'*/
+/*此组件用于测试布局*/
 import React, {Component} from 'react';
 import {
     AppRegistry,
     StyleSheet,
     Text,
-    View
+    View,
+    ListView,
 } from 'react-native';
 import ComB from './ComB'
 
-export default class ComA extends Component {
+export default class ComListView extends Component {
 
     constructor(props) {
         super(props);
-        this.state = ({
-            position: 1,
-            position2: 10
-        })
+        var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+        this.state = {
+            dataSource: ds.cloneWithRows(this._genRows()),
+        };
+    }
+
+    _genRows() {
+        const dataBlob = [];
+        for (let i = 0; i < 30; i++) {
+            dataBlob.push("aa" + i);
+        }
+        return dataBlob;
     }
 
     render() {
         return (
-            <View >
+            <View>
                 <View style={{flexDirection:'row',}}>
                     <Text style={{backgroundColor:'#F43E06',flex:1,color:"#ffffff",padding:2,}}
                           onPress={()=>{
                         const{navigator} = this.props;
                         if (navigator){
-                            navigator.pop();//退出
+                            navigator.pop();
                         }
-                    }}>网易新闻 -</Text>
+                    }}>网易新闻 - </Text>
                 </View>
-                <ComB ref="reftest"/>
-                <Text style={styles.instructions}>
-                    数值{this.state.position2}
-                </Text>
-                <Text style={styles.instructions } onPress={()=>{
-                    var position2=this.refs.reftest.state.size;
-                    this.setState({
-                        position:this.state.position+1,
-                        position2:position2,
-                    })
-                }}>
-                    按钮获取refs
-                </Text>
-
-
+                <ListView
+                    dataSource={this.state.dataSource}
+                    renderRow={(rowData) =>
+                <Text>{rowData}</Text>}/>
             </View>
+
         );
     }
 }
@@ -77,6 +70,5 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#f4003c',
         marginBottom: 5,
-
     },
 });

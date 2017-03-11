@@ -19,22 +19,30 @@ export default class ComHttp extends Component {
         this.state = {
             title: "",
             year: "",
-            jsonStr:{
-                "title": "",
-                "description": "",
-                "movies": [
-                    { "title": ""},
-                    { "title": ""}
-                ]
-            },
+            // jsonStr: {
+            //     "title": "",
+            //     "description": "",
+            //     "movies": [
+            //         {"title": ""},
+            //         {"title": ""}
+            //     ]
+            // },
+            jsonStr: '',
         };
+    }
+
+    componentDidMount() {
+        this.getMoviesFromApiAsync();           //每次创建的时候自动加载1次
     }
 
     getMoviesFromApiAsync() {       //Http异步请求
         fetch('http://facebook.github.io/react-native/movies.json')
             .then((response) => response.json())
             .then((responseJson) => {
-                this.resolveJson(responseJson);
+                this.setState({
+                    jsonStr: JSON.stringify(responseJson),//json转化成字符串      JSON.parse(jsonstr)//json=>str
+                    title: responseJson.movies[0].title, year: responseJson.movies[0].releaseYear
+                });
                 console.log(responseJson);
             })
             .catch((error) => {
@@ -42,17 +50,19 @@ export default class ComHttp extends Component {
             });
     };
 
-    resolveJson(responseJson) {
-        this.setState({
-            jsonStr:responseJson,
-            title: responseJson.movies[0].title, year: responseJson.movies[0].releaseYear
-        });
-    }
-
     render() {                  //onCreate
-        this.getMoviesFromApiAsync();           //每次创建的时候自动加载
+        // this.getMoviesFromApiAsync();           //每次创建的时候自动加载
         return (
             <View style={styles.container}>
+                <View style={{flexDirection:'row',}}>
+                    <Text style={{backgroundColor:'#F43E06',flex:1,color:"#ffffff",padding:2,}}
+                          onPress={()=>{
+                        const{navigator} = this.props;
+                        if (navigator){
+                            navigator.pop();
+                        }
+                    }}>网易新闻 - </Text>
+                </View>
                 <TouchableHighlight
                     underlayColor="rgb(33, 222, 155)"
                     activeOpacity={0.5}
@@ -62,7 +72,7 @@ export default class ComHttp extends Component {
                 </TouchableHighlight>
                 <Text>title：{this.state.title}</Text>
                 <Text>releaseYear：{this.state.year}</Text>
-                <Text>test：{this.state.jsonStr.movies[1].title}</Text>
+                <Text>返回的字符串是：{this.state.jsonStr}</Text>
             </View>
         );
     }
@@ -73,7 +83,6 @@ const styles = StyleSheet.create({
         flex: 1,
         // justifyContent: 'center',
         // alignItems: 'center',
-        margin: 10,
         backgroundColor: '#ffffff',
     },
 });

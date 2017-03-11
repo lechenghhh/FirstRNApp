@@ -19,25 +19,52 @@ import {
     Image,
     ScrollView,
     Textinput,
+    Navigator,
 } from 'react-native';
-// import ComLifeCycle from './ComLifeCycle';
-import ComLogin from './js/component/ComLogin';
+import Main from './js/component/Main'
+import ComA from './js/component/ComA'
+import ComB from './js/component/ComB'
+import ComC from './js/component/ComC'
 import ComHttp from './js/component/ComHttp';
+import ComLifeCycle from './js/component/ComLifeCycle';
+import ComListView from './js/component/ComListView';
+import ComLogin from './js/component/ComLogin';
 import ComNews from './js/component/ComNews'
 import ComWebView from './js/component/ComWebView'
+// import FetchG from './js/component/FetchG'
 
 export default class setup extends Component {
     render() {
         return (
-
             <View style={styles.container}>
-                {/*<Text style={styles.welcome}>*/}
-                {/*Welcome to React Native!*/}
-                {/*</Text>*/}
-                <Image style={{flex:1,}}
-                       source={{uri:'http://appserver.m.bing.net/BackgroundImageService/TodayImageService.svc/GetTodayImage?dateOffset=0&urlEncodeHeaders=true&osName=windowsPhone&osVersion=8.10&orientation=480x800&deviceName=WP8&mkt=en-US'}}>
-                    <ComNews/>
-                </Image>
+                <Navigator
+                    initialRoute={{name:"Main",}}
+                    renderScene={(route,nav)=>{
+                        switch (route.name) {
+                            case 'Main':
+                                return <Main navigator={nav} title="Main"/ >;
+                            case 'ComA':
+                                return <ComA navigator={nav} title="ComA"/ >;
+                            case 'ComB':
+                                return (<ComB navigator={nav} title="ComB"/ >);
+                            case 'ComC':
+                                return (<ComC navigator={nav} title="ComC"/ >);
+                            case 'ComHttp':
+                                return (<ComHttp navigator={nav} title="ComHttp"/ >);
+                            case 'ComLifeCycle':
+                                return (<ComLifeCycle navigator={nav} title="ComLifeCycle"/ >);
+                            case 'ComListView':
+                                return (<ComListView navigator={nav} title="ComListView"/ >);
+                            case 'ComLogin':
+                                return (<ComLogin navigator={nav} title="ComLogin"/ >);
+                            case 'ComNews':
+                                return (<ComNews navigator={nav} title="ComNews"/ >);
+                            {/*case 'ComWebView':*/}
+                                {/*return (<ComWebView navigator={nav} title="ComWebView"/ >);*/}
+                        }
+                    }}
+                />
+
             </View>
         );
     }

@@ -72,6 +72,15 @@ export default class ComLogin extends Component {
     render() {
         return (
             <View >
+                <View style={{flexDirection:'row',}}>
+                    <Text style={{backgroundColor:'#F43E06',flex:1,color:"#ffffff",padding:2,}}
+                          onPress={()=>{
+                        const{navigator} = this.props;
+                        if (navigator){
+                            navigator.pop();
+                        }
+                    }}>网易新闻</Text>
+                </View>
                 <Image style={{height:50,flex:1,}}
                        source={{uri:'https://img5.doubanio.com/view/photo/photo/public/p2441999246.jpg'}}></Image>
                 <Text style={{margin:10}}>请输入账号：</Text>
