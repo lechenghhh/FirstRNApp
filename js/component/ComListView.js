@@ -40,7 +40,7 @@ export default class ComListView extends Component {
                         if (navigator){
                             navigator.pop();
                         }
-                    }}>网易新闻 - </Text>
+                    }}>返回首页</Text>
                 </View>
                 <ListView
                     dataSource={this.state.dataSource}

@@ -32,7 +32,7 @@ export default class Com_b extends Component {
                         if (navigator){
                             navigator.pop();
                         }
-                    }}>网易新闻 - </Text>
+                    }}>返回首页</Text>
                 </View>
                 <Text style={{width:this.state.size,height:this.state.size,backgroundColor:'#f46201'}}>
                     数值{this.state.position}

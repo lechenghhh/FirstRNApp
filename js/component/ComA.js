@@ -2,12 +2,7 @@
  * Created by 乐城 on 2017/3/6.
  */
 //获取其他控件的数值的demo
-/*import ComA from './ComA'
- import ComB from './ComB'
- import ComC from './ComC'
- import ComLog from './ComLog'
- import FetchG from './FetchG'
- import ComHttp from './ComHttp'*/
+
 import React, {Component} from 'react';
 import {
     AppRegistry,
@@ -37,7 +32,7 @@ export default class ComA extends Component {
                         if (navigator){
                             navigator.pop();//退出
                         }
-                    }}>网易新闻 -</Text>
+                    }}>返回首页</Text>
                 </View>
                 <ComB ref="reftest"/>
                 <Text style={styles.instructions}>

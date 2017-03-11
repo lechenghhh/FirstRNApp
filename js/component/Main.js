@@ -22,12 +22,12 @@ export default class Main extends React.Component {
             <View style={styles.welcome}>
                 <Text style={styles.Text}
                       onPress={()=>{
-                    const{navigator} = this.props;
-                    if (navigator){
-                        navigator.push({
-                            name:'ComNews'
-                        })
-                    }
+                      const{navigator} = this.props;
+                      if (navigator){
+                          navigator.push({
+                              name:'ComNews'
+                           })
+                      }
                 }}>ComNews</Text>
                 <Text style={styles.Text}
                       onPress={()=>{
@@ -104,10 +104,10 @@ const styles = StyleSheet.create({
         color: '#F5FCFF',
         padding: 4,
     },
-    Text:{
-        padding:10,
-        color:'#ddd',
-        marginTop:5,
+    Text: {
+        padding: 10,
+        color: '#ddd',
+        marginTop: 5,
         // justifyContent: 'center',
         // alignItems: 'center',
         // flex:1,
