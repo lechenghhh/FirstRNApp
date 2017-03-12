@@ -32,7 +32,7 @@ export default class ComA extends Component {
                         if (navigator){
                             navigator.pop();//退出
                         }
-                    }}>返回首页</Text>
+                    }}>{' <- 返回首页'}</Text>
                 </View>
                 <ComB ref="reftest"/>
                 <Text style={styles.instructions}>

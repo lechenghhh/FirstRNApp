@@ -61,7 +61,7 @@ export default class ComHttp extends Component {
                         if (navigator){
                             navigator.pop();
                         }
-                    }}>返回首页</Text>
+                    }}>{' <- 返回首页'}</Text>
                 </View>
                 <TouchableHighlight
                     underlayColor="rgb(33, 222, 155)"

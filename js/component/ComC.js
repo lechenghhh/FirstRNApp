@@ -31,7 +31,7 @@ export default class ComC extends Component {
                         if (navigator){
                             navigator.pop();
                         }
-                    }}>返回首页</Text>
+                    }}>{' <- 返回首页'}</Text>
                 </View>
                 <View style={ {flexDirection:'row',backgroundColor:"darkgray",marginTop:20}}>
                     <View style={ {width:40,height:40,backgroundColor:"darkcyan",margin:5}}>

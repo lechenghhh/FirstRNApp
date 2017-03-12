@@ -4,6 +4,7 @@ import {
     View,
     WebView,
     Dimensions,
+    Text,
 } from 'react-native';
 
 const {width, height} = Dimensions.get('window');
@@ -18,6 +19,13 @@ export default class ComWebView extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <Text style={{backgroundColor:'#F43E06',color:"#ffffff",padding:2,fontSize:18,}}
+                      onPress={()=>{
+                        const{navigator} = this.props;
+                        if (navigator){
+                            navigator.pop();//退出
+                        }
+                    }}>{' ＜- 返回'}</Text>
                 <WebView
                     style={{width:width,height:height-20,backgroundColor:'gray'}}
                     source={{uri:url,method: 'GET'}}

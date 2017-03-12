@@ -129,7 +129,6 @@ export default class ComNews extends Component {
                         }}>
                             <Text style={{color: '#F5FCFF',fontSize:20}}>下一个</Text>
                         </TouchableHighlight>
-
                     </View>
                 </Image>
                 <Toast ref="toast" style={{backgroundColor:'#f4485f',borderRadius:20}}/>

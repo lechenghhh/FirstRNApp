@@ -60,8 +60,8 @@ export default class setup extends Component {
                                 return (<ComLogin navigator={nav} title="ComLogin"/ >);
                             case 'ComNews':
                                 return (<ComNews navigator={nav} title="ComNews"/ >);
-                            {/*case 'ComWebView':*/}
-                                {/*return (<ComWebView navigator={nav} title="ComWebView"/ >);*/}
+                            case 'ComWebView':
+                                return (<ComWebView navigator={nav} title="ComWebView"/ >);
                         }
                     }}
                 />

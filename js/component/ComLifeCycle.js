@@ -21,6 +21,13 @@ export default class ComLifeCycle extends Component {
 
     render() {
         return <View>
+            <Text style={{backgroundColor:'#F43E06',color:"#ffffff",padding:2,}}
+                  onPress={()=>{
+                        const{navigator} = this.props;
+                        if (navigator){
+                            navigator.pop();
+                        }
+                    }}>{' <- 返回首页'}</Text>
             <Text style={{fontSize:32,backgroundColor:'gray'}}
                   onPress={()=>{
                         this.setState({
@@ -34,7 +41,7 @@ export default class ComLifeCycle extends Component {
 
 const styles = StyleSheet.create({
     container: {
-            flex: 1,
+            // flex: 1,
             justifyContent: 'center',
             alignItems: 'center',
             backgroundColor: '#1f82bb',

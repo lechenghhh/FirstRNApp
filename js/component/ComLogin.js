@@ -79,7 +79,7 @@ export default class ComLogin extends Component {
                         if (navigator){
                             navigator.pop();
                         }
-                    }}>返回首页</Text>
+                    }}>{' <- 返回首页'}</Text>
                 </View>
                 <Image style={{height:50,flex:1,}}
                        source={{uri:'https://img5.doubanio.com/view/photo/photo/public/p2441999246.jpg'}}></Image>

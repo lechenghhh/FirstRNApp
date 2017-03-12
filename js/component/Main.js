@@ -10,6 +10,7 @@ import {
     Text,
     Image,
     ScrollView,
+    ListView,
     TouchableHighlight,
     TouchableOpacity,
 } from 'react-native';
@@ -17,81 +18,38 @@ import {
 import Toast, {DURATION} from 'react-native-easy-toast'//自定义简单toast，记得导包
 
 export default class Main extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),                             //list数据源2
+            strArr: new Array( 'ComA', 'ComB', 'ComC', 'ComHttp','ComLifeCycle',
+                'ComListView','ComLogin','ComNews','ComWebView'),
+        }
+    }
+
+    componentDidMount() {
+        this.setState({
+            dataSource: this.state.dataSource.cloneWithRows(this.state.strArr)
+        })
+    }
+
     render() {
         return (
             <View style={styles.welcome}>
-                <Text style={styles.Text}
+                <Text>HelloWorld!</Text>
+                <ListView
+                    dataSource={this.state.dataSource}
+                    renderRow={(rowData) =>
+                    <Text style={styles.Text}
                       onPress={()=>{
                       const{navigator} = this.props;
                       if (navigator){
                           navigator.push({
-                              name:'ComNews'
+                              name:rowData,
                            })
                       }
-                }}>ComNews</Text>
-                <Text style={styles.Text}
-                      onPress={()=>{
-                    const{navigator} = this.props;
-                    if (navigator){
-                        navigator.push({
-                            name:'ComA'
-                        })
-                    }
-                }}>ComA</Text>
-                <Text style={styles.Text}
-                      onPress={()=>{
-                    const{navigator} = this.props;
-                    if (navigator){
-                        navigator.push({
-                            name:'ComB'
-                        })
-                    }
-                }}>ComB</Text>
-                <Text style={styles.Text}
-                      onPress={()=>{
-                    const{navigator} = this.props;
-                    if (navigator){
-                        navigator.push({
-                            name:'ComC'
-                        })
-                    }
-                }}>ComC</Text>
-                <Text style={styles.Text}
-                      onPress={()=>{
-                    const{navigator} = this.props;
-                    if (navigator){
-                        navigator.push({
-                            name:'ComLogin'
-                        })
-                    }
-                }}>ComLogin</Text>
-                <Text style={styles.Text}
-                      onPress={()=>{
-                    const{navigator} = this.props;
-                    if (navigator){
-                        navigator.push({
-                            name:'ComHttp'
-                        })
-                    }
-                }}>ComHttp</Text>
-                <Text style={styles.Text}
-                      onPress={()=>{
-                    const{navigator} = this.props;
-                    if (navigator){
-                        navigator.push({
-                            name:'ComListView'
-                        })
-                    }
-                }}>ComListView</Text>
-                <Text style={styles.Text}
-                      onPress={()=>{
-                    const{navigator} = this.props;
-                    if (navigator){
-                        navigator.push({
-                            name:'FetchG'
-                        })
-                    }
-                }}>FetchG</Text>
+                }}>{rowData}</Text>}/>
+
             </View>
         );
     }
@@ -100,12 +58,14 @@ const styles = StyleSheet.create({
     welcome: {
         fontSize: 20,
         textAlign: 'center',
-        backgroundColor: '#056bd4',
         color: '#F5FCFF',
+        flex: 1,
+        backgroundColor: '#d3d4bd',
         padding: 4,
     },
     Text: {
         padding: 10,
+        backgroundColor: '#056bd4',
         color: '#ddd',
         marginTop: 5,
         // justifyContent: 'center',
