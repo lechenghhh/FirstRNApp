@@ -31,7 +31,8 @@ import ComListView from './js/component/ComListView';
 import ComLogin from './js/component/ComLogin';
 import ComNews from './js/component/ComNews'
 import ComWebView from './js/component/ComWebView'
-// import FetchG from './js/component/FetchG'
+import ModalDemo from './js/component/ModalDemo'
+import FetchG from './js/component/FetchG'
 
 export default class setup extends Component {
     render() {
@@ -62,6 +63,10 @@ export default class setup extends Component {
                                 return (<ComNews navigator={nav} title="ComNews"/ >);
                             case 'ComWebView':
                                 return (<ComWebView navigator={nav} title="ComWebView"/ >);
+                            case 'ModalDemo':
+                                return (<ModalDemo navigator={nav} title="ModalDemo"/ >);
+                            case 'FetchG':
+                                return (<FetchG navigator={nav} title="FetchG"/ >);
                         }
                     }}
                 />

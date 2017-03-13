@@ -46,9 +46,19 @@ class FetchG extends Component {
 
     renderView() {
         return (
-            <ListView
-                dataSource={this.state.dataSource}
-                renderRow={this.renderRow}/>
+            <View>
+                <Text style={{backgroundColor:'#F43E06',color:"#ffffff",padding:2,fontSize:18,}}
+                      onPress={()=>{
+                        const{navigator} = this.props;
+                        if (navigator){
+                            navigator.pop();//退出
+                        }
+                    }}>{' ＜- 返回'}</Text>
+                <ListView
+                    dataSource={this.state.dataSource}
+                    renderRow={this.renderRow}/>
+            </View>
+
         )
 
     }
