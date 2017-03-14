@@ -44,29 +44,29 @@ export default class setup extends Component {
                     renderScene={(route,nav)=>{
                         switch (route.name) {
                             case 'Main':
-                                return <Main navigator={nav} title="Main"/ >;
+                                return <Main navigator={nav} title="Main"/>;
                             case 'ComA':
-                                return <ComA navigator={nav} title="ComA"/ >;
+                                return <ComA navigator={nav} title="ComA"/>;
                             case 'ComB':
-                                return (<ComB navigator={nav} title="ComB"/ >);
+                                return (<ComB navigator={nav} title="ComB"/>);
                             case 'ComC':
-                                return (<ComC navigator={nav} title="ComC"/ >);
+                                return (<ComC navigator={nav} title="ComC"/>);
                             case 'ComHttp':
-                                return (<ComHttp navigator={nav} title="ComHttp"/ >);
+                                return (<ComHttp navigator={nav} title="ComHttp"/>);
                             case 'ComLifeCycle':
-                                return (<ComLifeCycle navigator={nav} title="ComLifeCycle"/ >);
+                                return (<ComLifeCycle navigator={nav} title="ComLifeCycle"/>);
                             case 'ComListView':
-                                return (<ComListView navigator={nav} title="ComListView"/ >);
+                                return (<ComListView navigator={nav} title="ComListView"/>);
                             case 'ComLogin':
-                                return (<ComLogin navigator={nav} title="ComLogin"/ >);
+                                return (<ComLogin navigator={nav} title="ComLogin"/>);
                             case 'ComNews':
-                                return (<ComNews navigator={nav} title="ComNews"/ >);
+                                return (<ComNews navigator={nav} title="ComNews"/>);
                             case 'ComWebView':
-                                return (<ComWebView navigator={nav} title="ComWebView"/ >);
+                                return (<ComWebView navigator={nav} title="ComWebView"/>);
                             case 'ModalDemo':
-                                return (<ModalDemo navigator={nav} title="ModalDemo"/ >);
+                                return (<ModalDemo navigator={nav} title="ModalDemo"/>);
                             case 'FetchG':
-                                return (<FetchG navigator={nav} title="FetchG"/ >);
+                                return (<FetchG navigator={nav} title="FetchG"/>);
                         }
                     }}
                 />
