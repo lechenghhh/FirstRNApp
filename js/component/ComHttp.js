@@ -2,6 +2,8 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  * @flow
+ * http请求教程：
+ * http://blog.csdn.net/mingyunxiaohai/article/details/52413610
  */
 
 import React, {Component} from 'react';
