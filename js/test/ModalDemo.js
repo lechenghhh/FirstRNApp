@@ -49,13 +49,13 @@ export default class ModalDemo extends Component {
 
         return (
             <View style={{flex: 1, backgroundColor: '#333333'}}>
-                <Text style={{backgroundColor:'#F43E06',color:"#ffffff",padding:2,fontSize:18,}}
-                      onPress={()=>{
-                        const{navigator} = this.props;
-                        if (navigator){
-                            navigator.pop();//退出
-                        }
-                    }}>{' ＜- 返回'}</Text>
+                <Text style={{backgroundColor: '#F43E06', color: "#ffffff", padding: 2, fontSize: 18,}}
+                      onPress={() => {
+                          const {navigator} = this.props;
+                          if (navigator) {
+                              navigator.pop();//退出
+                          }
+                      }}>{' ＜- 返回'}</Text>
                 <Text style={{color: 'white'}}>Modal实例演示</Text>
                 <Modal
                     animated={this.state.animationType}

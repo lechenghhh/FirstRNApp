@@ -25,35 +25,35 @@ export default class Com_b extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={{flexDirection:'row',}}>
-                    <Text style={{backgroundColor:'#F43E06',flex:1,color:"#ffffff",padding:2,}}
-                          onPress={()=>{
-                        const{navigator} = this.props;
-                        if (navigator){
-                            navigator.pop();
-                        }
-                    }}>{' <- 返回首页'}</Text>
+                <View style={{flexDirection: 'row',}}>
+                    <Text style={{backgroundColor: '#F43E06', flex: 1, color: "#ffffff", padding: 2,}}
+                          onPress={() => {
+                              const {navigator} = this.props;
+                              if (navigator) {
+                                  navigator.pop();
+                              }
+                          }}>{' <- 返回首页'}</Text>
                 </View>
-                <Text style={{width:this.state.size,height:this.state.size,backgroundColor:'#f46201'}}>
+                <Text style={{width: this.state.size, height: this.state.size, backgroundColor: '#f46201'}}>
                     数值{this.state.position}
                 </Text>
-                <Text style={styles.instructions} onPress={()=>{
+                <Text style={styles.instructions} onPress={() => {
                     this.setState({
-                        size:this.state.size-10,
-                        position:this.state.position+1,
+                        size: this.state.size - 10,
+                        position: this.state.position + 1,
                     })
                 }}>变小</Text>
-                <Text style={styles.instructions } onPress={()=>{
+                <Text style={styles.instructions } onPress={() => {
                     this.setState({
-                        size:this.state.size+10,
-                        position:this.state.position+1,
+                        size: this.state.size + 10,
+                        position: this.state.position + 1,
                     })
                 }}>变大</Text>
-                <Text onPress={()=>{
-                    const{navigator} = this.props;
-                    if (navigator){
+                <Text onPress={() => {
+                    const {navigator} = this.props;
+                    if (navigator) {
                         navigator.push({
-                            name:'ComC'
+                            name: 'ComC'
                         })
                     }
                 }}>跳转按钮，与上面无关</Text>

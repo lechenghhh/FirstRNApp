@@ -22,10 +22,10 @@ export default class Main extends React.Component {
         super(props)
         this.state = {
             dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),                             //list数据源2
-            strArr: new Array( 'ComA', 'ComB', 'ComC', 'ComHttp','ComLifeCycle',
-                'ComListView','ComLogin','ComNews','ComWebView','ModalDemo',
-                'FetchG','','','','',
-                '','','','','',),
+            strArr: new Array('ComA', 'ComB', 'ComC', 'ComHttp', 'ComLifeCycle',
+                'ComListView', 'ComLogin', 'ComNews', 'ComWebView', 'ModalDemo',
+                'FetchG', '', '', '', '',
+                '', '', '', '', '',),
         }
     }
 
@@ -42,15 +42,15 @@ export default class Main extends React.Component {
                 <ListView
                     dataSource={this.state.dataSource}
                     renderRow={(rowData) =>
-                    <Text style={styles.Text}
-                      onPress={()=>{
-                      const{navigator} = this.props;
-                      if (navigator){
-                          navigator.push({
-                              name:rowData,
-                           })
-                      }
-                }}>{rowData}</Text>}/>
+                        <Text style={styles.Text}
+                              onPress={() => {
+                                  const {navigator} = this.props;
+                                  if (navigator) {
+                                      navigator.push({
+                                          name: rowData,
+                                      })
+                                  }
+                              }}>{rowData}</Text>}/>
 
             </View>
         );

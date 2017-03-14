@@ -72,47 +72,47 @@ export default class ComLogin extends Component {
     render() {
         return (
             <View >
-                <View style={{flexDirection:'row',}}>
-                    <Text style={{backgroundColor:'#F43E06',flex:1,color:"#ffffff",padding:2,}}
-                          onPress={()=>{
-                        const{navigator} = this.props;
-                        if (navigator){
-                            navigator.pop();
-                        }
-                    }}>{' <- 返回首页'}</Text>
+                <View style={{flexDirection: 'row',}}>
+                    <Text style={{backgroundColor: '#F43E06', flex: 1, color: "#ffffff", padding: 2,}}
+                          onPress={() => {
+                              const {navigator} = this.props;
+                              if (navigator) {
+                                  navigator.pop();
+                              }
+                          }}>{' <- 返回首页'}</Text>
                 </View>
-                <Image style={{height:50,flex:1,}}
-                       source={{uri:'https://img5.doubanio.com/view/photo/photo/public/p2441999246.jpg'}}></Image>
-                <Text style={{margin:10}}>请输入账号：</Text>
+                <Image style={{height: 50, flex: 1,}}
+                       source={{uri: 'https://img5.doubanio.com/view/photo/photo/public/p2441999246.jpg'}}></Image>
+                <Text style={{margin: 10}}>请输入账号：</Text>
                 <TextInput
                     style={styles.input}
-                    onChangeText={(str1) =>this.setState({str1})}
+                    onChangeText={(str1) => this.setState({str1})}
                     value={this.state.str1}/>
-                <Text style={{margin:10}}>请输入密码：</Text>
+                <Text style={{margin: 10}}>请输入密码：</Text>
                 <TextInput
                     style={styles.input}
-                    onChangeText={(str2) =>this.setState({str2})}
+                    onChangeText={(str2) => this.setState({str2})}
                     value={this.state.str2}/>
 
-                <Text style={styles.welcome} onPress={()=>{
+                <Text style={styles.welcome} onPress={() => {
                     var keyName = 'myname';        //存储数据的方法
                     var keyValue = this.state.str2;
-                    AsyncStorage.setItem(keyName,keyValue,function(errs){
-                    if (errs)       //TODO:错误处理
-                        console.log('存储错误');
-                    else
-                        console.log('存储成功');
+                    AsyncStorage.setItem(keyName, keyValue, function (errs) {
+                        if (errs)       //TODO:错误处理
+                            console.log('存储错误');
+                        else
+                            console.log('存储成功');
                     });
                 }}>存储</Text>
                 <Text style={{color: '#f4f4f0',}}>{this.state.str2}获取的结果是：{this.state.tv1}</Text>
-                <Text style={styles.welcome} onPress={()=>{
+                <Text style={styles.welcome} onPress={() => {
                     var keyName = 'myname';         //读取数据的方法
                     var _this = this;
                     AsyncStorage.getItem(keyName, function (errs, result) {
-                        if (!errs){                        //TODO:错误处理
+                        if (!errs) {                        //TODO:错误处理
                             console.log('result = ' + result);
                             _this.setState({
-                                saveDataResult:result,
+                                saveDataResult: result,
                             })
                         }
                         else

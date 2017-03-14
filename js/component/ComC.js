@@ -24,36 +24,36 @@ export default class ComC extends Component {
     render() {
         return (
             <View>
-                <View style={{flexDirection:'row',}}>
-                    <Text style={{backgroundColor:'#F43E06',flex:1,color:"#ffffff",padding:2,}}
-                          onPress={()=>{
-                        const{navigator} = this.props;
-                        if (navigator){
-                            navigator.pop();
-                        }
-                    }}>{' <- 返回首页'}</Text>
+                <View style={{flexDirection: 'row',}}>
+                    <Text style={{backgroundColor: '#F43E06', flex: 1, color: "#ffffff", padding: 2,}}
+                          onPress={() => {
+                              const {navigator} = this.props;
+                              if (navigator) {
+                                  navigator.pop();
+                              }
+                          }}>{' <- 返回首页'}</Text>
                 </View>
-                <View style={ {flexDirection:'row',backgroundColor:"darkgray",marginTop:20}}>
-                    <View style={ {width:40,height:40,backgroundColor:"darkcyan",margin:5}}>
-                        <Text style={ {fontSize:16}}>1</Text>
+                <View style={ {flexDirection: 'row', backgroundColor: "darkgray", marginTop: 20}}>
+                    <View style={ {width: 40, height: 40, backgroundColor: "darkcyan", margin: 5}}>
+                        <Text style={ {fontSize: 16}}>1</Text>
                     </View>
-                    <View style={ {width:40,height:40,backgroundColor:"darkcyan",margin:5}}>
-                        <Text style={ {fontSize:16}}>2</Text>
+                    <View style={ {width: 40, height: 40, backgroundColor: "darkcyan", margin: 5}}>
+                        <Text style={ {fontSize: 16}}>2</Text>
                     </View>
-                    <View style={ {width:40,height:40,backgroundColor:"darkcyan",margin:5}}>
-                        <Text style={ {fontSize:16}}>3</Text>
+                    <View style={ {width: 40, height: 40, backgroundColor: "darkcyan", margin: 5}}>
+                        <Text style={ {fontSize: 16}}>3</Text>
                     </View>
-                    <View style={ {width:40,height:40,backgroundColor:"darkcyan",margin:5,flex:1}}>
-                        <Text style={ {fontSize:16}}>4</Text>
+                    <View style={ {width: 40, height: 40, backgroundColor: "darkcyan", margin: 5, flex: 1}}>
+                        <Text style={ {fontSize: 16}}>4</Text>
                     </View>
-                    <Text onPress={()=>{
-                    const{navigator} = this.props;
-                    if (navigator){
-                        navigator.push({
-                            name:'ComB'
-                        })
-                    }
-                }}>跳转按钮，与上面无关</Text>
+                    <Text onPress={() => {
+                        const {navigator} = this.props;
+                        if (navigator) {
+                            navigator.push({
+                                name: 'ComB'
+                            })
+                        }
+                    }}>跳转按钮，与上面无关</Text>
                 </View>
             </View>
         );

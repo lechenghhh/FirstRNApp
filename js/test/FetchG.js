@@ -47,13 +47,13 @@ class FetchG extends Component {
     renderView() {
         return (
             <View>
-                <Text style={{backgroundColor:'#F43E06',color:"#ffffff",padding:2,fontSize:18,}}
-                      onPress={()=>{
-                        const{navigator} = this.props;
-                        if (navigator){
-                            navigator.pop();//退出
-                        }
-                    }}>{' ＜- 返回'}</Text>
+                <Text style={{backgroundColor: '#F43E06', color: "#ffffff", padding: 2, fontSize: 18,}}
+                      onPress={() => {
+                          const {navigator} = this.props;
+                          if (navigator) {
+                              navigator.pop();//退出
+                          }
+                      }}>{' ＜- 返回'}</Text>
                 <ListView
                     dataSource={this.state.dataSource}
                     renderRow={this.renderRow}/>
@@ -68,9 +68,9 @@ class FetchG extends Component {
      */
     renderRow(rowData) {
         return (
-            <View style={{ flex: 1 }}>
-                <Image source={{ uri: rowData.url }}
-                       style={{ width: width, height: height / 2, marginTop: 5 }}/>
+            <View style={{flex: 1}}>
+                <Image source={{uri: rowData.url}}
+                       style={{width: width, height: height / 2, marginTop: 5}}/>
             </View>
         )
     }

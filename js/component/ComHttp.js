@@ -56,21 +56,21 @@ export default class ComHttp extends Component {
         // this.getMoviesFromApiAsync();           //每次创建的时候自动加载
         return (
             <View style={styles.container}>
-                <View style={{flexDirection:'row',}}>
-                    <Text style={{backgroundColor:'#F43E06',flex:1,color:"#ffffff",padding:2,}}
-                          onPress={()=>{
-                        const{navigator} = this.props;
-                        if (navigator){
-                            navigator.pop();
-                        }
-                    }}>{' <- 返回首页'}</Text>
+                <View style={{flexDirection: 'row',}}>
+                    <Text style={{backgroundColor: '#F43E06', flex: 1, color: "#ffffff", padding: 2,}}
+                          onPress={() => {
+                              const {navigator} = this.props;
+                              if (navigator) {
+                                  navigator.pop();
+                              }
+                          }}>{' <- 返回首页'}</Text>
                 </View>
                 <TouchableHighlight
                     underlayColor="rgb(33, 222, 155)"
                     activeOpacity={0.5}
-                    style={{ borderRadius: 8,padding: 8,marginTop:5,backgroundColor:"#0588fe"}}
+                    style={{borderRadius: 8, padding: 8, marginTop: 5, backgroundColor: "#0588fe"}}
                     onPress={this.getMoviesFromApiAsync.bind(this)}>
-                    <Text style={{color: '#F5FCFF',fontSize:20}}>刷新</Text>
+                    <Text style={{color: '#F5FCFF', fontSize: 20}}>刷新</Text>
                 </TouchableHighlight>
                 <Text>title：{this.state.title}</Text>
                 <Text>releaseYear：{this.state.year}</Text>

@@ -33,19 +33,19 @@ export default class ComListView extends Component {
     render() {
         return (
             <View>
-                <View style={{flexDirection:'row',}}>
-                    <Text style={{backgroundColor:'#F43E06',flex:1,color:"#ffffff",padding:2,}}
-                          onPress={()=>{
-                        const{navigator} = this.props;
-                        if (navigator){
-                            navigator.pop();
-                        }
-                    }}>{' <- 返回首页'}</Text>
+                <View style={{flexDirection: 'row',}}>
+                    <Text style={{backgroundColor: '#F43E06', flex: 1, color: "#ffffff", padding: 2,}}
+                          onPress={() => {
+                              const {navigator} = this.props;
+                              if (navigator) {
+                                  navigator.pop();
+                              }
+                          }}>{' <- 返回首页'}</Text>
                 </View>
                 <ListView
                     dataSource={this.state.dataSource}
                     renderRow={(rowData) =>
-                <Text>{rowData}</Text>}/>
+                        <Text>{rowData}</Text>}/>
             </View>
 
         );

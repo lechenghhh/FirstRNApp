@@ -40,8 +40,8 @@ export default class setup extends Component {
             <View style={styles.container}>
 
                 <Navigator
-                    initialRoute={{name:"Main",}}
-                    renderScene={(route,nav)=>{
+                    initialRoute={{name: "Main",}}
+                    renderScene={(route, nav) => {
                         switch (route.name) {
                             case 'Main':
                                 return <Main navigator={nav} title="Main"/>;
