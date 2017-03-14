@@ -5,9 +5,10 @@
  * var ScrollableTabView = require('react-native-scrollable-tab-view');
  *
  *
- *
- var ScrollableTabView = require('react-native-scrollable-tab-view');
+ */
 
+/**
+ var ScrollableTabView = require('react-native-scrollable-tab-view');
  var App = React.createClass({
   render() {
     return (

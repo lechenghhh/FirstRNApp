@@ -31,8 +31,8 @@ import ComListView from './js/component/ComListView';
 import ComLogin from './js/component/ComLogin';
 import ComNews from './js/component/ComNews'
 import ComWebView from './js/component/ComWebView'
-import ModalDemo from './js/component/ModalDemo'
-import FetchG from './js/component/FetchG'
+import ModalDemo from './js/test/ModalDemo'
+import FetchG from './js/test/FetchG'
 
 export default class setup extends Component {
     render() {
