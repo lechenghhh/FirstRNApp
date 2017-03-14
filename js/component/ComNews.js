@@ -20,7 +20,9 @@ import {
     AlertIOS,
 } from 'react-native';
 import Toast, {DURATION} from 'react-native-easy-toast'
-
+import ScrollableTabView from 'react-native-scrollable-tab-view'
+import ComA from '../component/ComA'
+import ComB from '../component/ComC'
 
 export default class ComNews extends Component {
     constructor(props) {
@@ -76,39 +78,53 @@ export default class ComNews extends Component {
                                   }
                               }}>网易新闻 - {this.state.type}</Text>
                     </View>
-                    <ScrollView contentContainerStyle={styles.contentContainer}>
-                        <ListView
-                            style={{margin: 4}}
-                            dataSource={this.state.dataSource}
-                            renderRow={(rowData) =>
-                                <View style={{flexDirection: 'row', margin: 2, padding: 4,}}>
-                                    <Image style={{height: 60, width: 40}}
-                                           source={{uri: rowData.imgurl}}>
-                                    </Image>
-                                    <View style={{
-                                        backgroundColor: '#1b1d1d',
-                                        flex: 1,
-                                        marginLeft: 6,
-                                        justifyContent: 'space-around'
-                                    }}>
-                                        <Text style={{color: "#cef4e3", flexWrap: 'wrap'}} onPress={() => {
-                                            this.refs.toast.show('文章内容：' + rowData.docurl);
-                                            const {navigator} = this.props;
-                                            if (navigator) {
-                                                navigator.push({
-                                                    name: 'ComWebView',
-                                                    params: {
-                                                        intentNews: rowData.docurl,
-                                                    },
-                                                })
-                                            }
-                                        }}>{rowData.title}</Text>
-                                        <Text style={{color: "#82a1a8"}}>{rowData.time}</Text>
+                    <ScrollableTabView
+                        tabBarActiveTextColor="#111111"//文字颜色
+                        tabBarInactiveTextColor="#999"//未被选中的文字颜色
+                        tabBarUnderlineColor='#FF0000'
+                        tabBarPosition="overlayBottom"
+                        onChangeTab={(obj) => {
+                            console.log('index:' + obj.i);
+
+                        }
+                        }>
+                        <ScrollView tabLabel="第1"
+                            contentContainerStyle={styles.contentContainer}>
+                            <ListView
+                                style={{margin: 4}}
+                                dataSource={this.state.dataSource}
+                                renderRow={(rowData) =>
+                                    <View style={{flexDirection: 'row', margin: 2, padding: 4,}}>
+                                        <Image style={{height: 60, width: 40}}
+                                               source={{uri: rowData.imgurl}}>
+                                        </Image>
+                                        <View style={{
+                                            backgroundColor: '#1b1d1d',
+                                            flex: 1,
+                                            marginLeft: 6,
+                                            justifyContent: 'space-around'
+                                        }}>
+                                            <Text style={{color: "#cef4e3", flexWrap: 'wrap'}} onPress={() => {
+                                                this.refs.toast.show('文章内容：' + rowData.docurl);
+                                                const {navigator} = this.props;
+                                                if (navigator) {
+                                                    navigator.push({
+                                                        name: 'ComWebView',
+                                                        params: {
+                                                            intentNews: rowData.docurl,
+                                                        },
+                                                    })
+                                                }
+                                            }}>{rowData.title}</Text>
+                                            <Text style={{color: "#82a1a8"}}>{rowData.time}</Text>
+                                        </View>
                                     </View>
-                                </View>
-                            }/>
-                        {/*<Text>请求结果是：{this.state.jsonStr}</Text>*/}
-                    </ScrollView>
+                                }/>
+                            {/*<Text>请求结果是：{this.state.jsonStr}</Text>*/}
+                        </ScrollView>
+                        <ComB tabLabel="第二"/>
+                        <ComNews tabLabel="新闻"/>
+                    </ScrollableTabView>
                     <View style={{flexDirection: 'row',}}>
                         <TouchableHighlight
                             style={styles.btn}

@@ -34,7 +34,7 @@ export default class Com_b extends Component {
                               if (navigator) {
                                   navigator.pop();
                               }
-                          }}>{' <- 返回首页'}</Text>
+                          }}></Text>
                 </View>
                 <Text style={{width: this.state.size, height: this.state.size, backgroundColor: '#f46201'}}>
                     数值{this.state.position}

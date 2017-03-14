@@ -11,8 +11,7 @@ import {
     Image,
     ScrollView,
     ListView,
-    TouchableHighlight,
-    TouchableOpacity,
+
 } from 'react-native';
 
 import Toast, {DURATION} from 'react-native-easy-toast'//自定义简单toast，记得导包
@@ -24,7 +23,7 @@ export default class Main extends React.Component {
             dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),                             //list数据源2
             strArr: new Array('ComA', 'ComB', 'ComC', 'ComHttp', 'ComLifeCycle',
                 'ComListView', 'ComLogin', 'ComNews', 'ComWebView', 'ModalDemo',
-                'FetchG', '', '', '', '',
+                'FetchG', 'TableView', '', '', '',
                 '', '', '', '', '',),
         }
     }
