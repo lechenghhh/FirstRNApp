@@ -9,7 +9,8 @@ import {
     AppRegistry,
     StyleSheet,
     Text,
-    View
+    View,
+    TextInput,
 } from 'react-native';
 
 export default class Com_b extends Component {
@@ -18,7 +19,8 @@ export default class Com_b extends Component {
         super(props);
         this.state = ({
             position: 1,
-            size: 80
+            size: 80,
+            et1: '',
         })
     }
 
@@ -49,11 +51,16 @@ export default class Com_b extends Component {
                         position: this.state.position + 1,
                     })
                 }}>变大</Text>
+                <TextInput onChangeText={(et1) => this.setState({et1})}
+                           value={this.state.et1}/>
                 <Text onPress={() => {
                     const {navigator} = this.props;
                     if (navigator) {
                         navigator.push({
-                            name: 'ComC'
+                            name: 'ComC',
+                            params: {
+                                intentA: this.state.et1,
+                            },
                         })
                     }
                 }}>跳转按钮，与上面无关</Text>

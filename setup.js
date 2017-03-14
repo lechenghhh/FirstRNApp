@@ -35,6 +35,15 @@ import ModalDemo from './js/test/ModalDemo'
 import FetchG from './js/test/FetchG'
 
 export default class setup extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            intent: '',
+            intent2: '',
+        }
+
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -42,15 +51,16 @@ export default class setup extends Component {
                 <Navigator
                     initialRoute={{name: "Main",}}
                     renderScene={(route, nav) => {
+                        let Component = route.component;
                         switch (route.name) {
                             case 'Main':
                                 return <Main navigator={nav} title="Main"/>;
                             case 'ComA':
                                 return <ComA navigator={nav} title="ComA"/>;
-                            case 'ComB':
-                                return (<ComB navigator={nav} title="ComB"/>);
-                            case 'ComC':
-                                return (<ComC navigator={nav} title="ComC"/>);
+                            case 'ComB':    //带上route.parames参数可以在界面之间传值
+                                return (<ComB {...route.params} navigator={nav} title="ComB"/>);
+                            case 'ComC':    //带上route.parames参数可以在界面之间传值
+                                return (<ComC {...route.params} navigator={nav} title="ComC"/>);
                             case 'ComHttp':
                                 return (<ComHttp navigator={nav} title="ComHttp"/>);
                             case 'ComLifeCycle':
@@ -60,15 +70,16 @@ export default class setup extends Component {
                             case 'ComLogin':
                                 return (<ComLogin navigator={nav} title="ComLogin"/>);
                             case 'ComNews':
-                                return (<ComNews navigator={nav} title="ComNews"/>);
+                                return (<ComNews {...route.params}navigator={nav} title="ComNews"/>);
                             case 'ComWebView':
-                                return (<ComWebView navigator={nav} title="ComWebView"/>);
+                                return (<ComWebView {...route.params}navigator={nav} title="ComWebView"/>);
                             case 'ModalDemo':
                                 return (<ModalDemo navigator={nav} title="ModalDemo"/>);
                             case 'FetchG':
                                 return (<FetchG navigator={nav} title="FetchG"/>);
                         }
                     }}
+
                 />
 
             </View>

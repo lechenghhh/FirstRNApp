@@ -71,7 +71,7 @@ export default class ComNews extends Component {
                                   const {navigator} = this.props;
                                   if (navigator) {
                                       navigator.push({
-                                          name: 'Main'
+                                          name: 'Main',
                                       })
                                   }
                               }}>网易新闻 - {this.state.type}</Text>
@@ -93,6 +93,15 @@ export default class ComNews extends Component {
                                     }}>
                                         <Text style={{color: "#cef4e3", flexWrap: 'wrap'}} onPress={() => {
                                             this.refs.toast.show('文章内容：' + rowData.docurl);
+                                            const {navigator} = this.props;
+                                            if (navigator) {
+                                                navigator.push({
+                                                    name: 'ComWebView',
+                                                    params: {
+                                                        intentNews: rowData.docurl,
+                                                    },
+                                                })
+                                            }
                                         }}>{rowData.title}</Text>
                                         <Text style={{color: "#82a1a8"}}>{rowData.time}</Text>
                                     </View>
@@ -109,7 +118,7 @@ export default class ComNews extends Component {
                                 this.setState({
                                     type: this.state.str2[this.state.i],
                                     i: this.state.i + 1,
-                                })
+                                });
                             }}>
                             <Text style={{color: '#F5FCFF', fontSize: 20}}>上一个</Text>
                         </TouchableHighlight>
@@ -136,7 +145,7 @@ export default class ComNews extends Component {
                         </TouchableHighlight>
                     </View>
                 </Image>
-                <Toast ref="toast" style={{backgroundColor: '#f4485f', borderRadius: 20}}/>
+                <Toast ref="toast" style={{backgroundColor: '#f4485f', borderRadius: 10}}/>
             </View>
         );
     }

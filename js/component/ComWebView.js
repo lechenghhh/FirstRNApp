@@ -14,6 +14,15 @@ export default class ComWebView extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            getIntent: '',
+        }
+    }
+
+    componentDidMount() {           //获取上个界面的传值
+        this.setState({
+            getIntent: this.props.intentNews,
+        });
     }
 
     render() {
@@ -21,6 +30,7 @@ export default class ComWebView extends Component {
             <View style={styles.container}>
                 <Text style={{backgroundColor: '#F43E06', color: "#ffffff", padding: 2, fontSize: 18,}}
                       onPress={() => {
+
                           const {navigator} = this.props;
                           if (navigator) {
                               navigator.pop();//退出
@@ -28,7 +38,7 @@ export default class ComWebView extends Component {
                       }}>{' ＜- 返回'}</Text>
                 <WebView
                     style={{width: width, height: height - 20, backgroundColor: 'gray'}}
-                    source={{uri: url, method: 'GET'}}
+                    source={{uri: this.state.getIntent, method: 'GET'}}
                     javaScriptEnabled={true}
                     domStorageEnabled={true}
                     scalesPageToFit={false}
@@ -42,6 +52,5 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#f2f2f2',
-        paddingTop: 20,
     },
 });  

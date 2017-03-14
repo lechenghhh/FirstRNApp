@@ -17,8 +17,15 @@ export default class ComC extends Component {
         super(props);
         this.state = ({
             position: 1,
-            position2: 10
+            position2: 10,
+            getIntent: '',
         })
+    }
+
+    componentDidMount() {           //获取上个界面的传值
+        this.setState({
+            getIntent: this.props.intentA,
+        });
     }
 
     render() {
@@ -46,15 +53,17 @@ export default class ComC extends Component {
                     <View style={ {width: 40, height: 40, backgroundColor: "darkcyan", margin: 5, flex: 1}}>
                         <Text style={ {fontSize: 16}}>4</Text>
                     </View>
-                    <Text onPress={() => {
-                        const {navigator} = this.props;
-                        if (navigator) {
-                            navigator.push({
-                                name: 'ComB'
-                            })
-                        }
-                    }}>跳转按钮，与上面无关</Text>
+
                 </View>
+                <Text style={{marginTop: 80,}}>收到的值： {this.state.getIntent}</Text>
+                <Text style={{backgroundColor: '#80ff5d',}} onPress={() => {
+                    const {navigator} = this.props;
+                    if (navigator) {
+                        navigator.push({
+                            name: 'ComB'
+                        })
+                    }
+                }}>跳转按钮，与上面无关</Text>
             </View>
         );
     }
