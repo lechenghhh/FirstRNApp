@@ -29,10 +29,11 @@ export default class ComNews extends Component {
         super(props)
         this.state = {
             dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),                             //list数据源2
-            type: 'tech',
+            type: 'war',
             jsonStr: '',
-            str2: new Array('war', 'tech', 'sport', 'edu', 'ent', 'money', 'travel', 'gupiao', 'lady'),
-            i: 2,
+            str2: new Array('war', 'tech', 'sport'),
+            // , 'edu', 'ent', 'money', 'travel', 'gupiao', 'lady'),
+            i2: 2,
         };
     }
 
@@ -79,17 +80,19 @@ export default class ComNews extends Component {
                               }}>网易新闻 - {this.state.type}</Text>
                     </View>
                     <ScrollableTabView
-                        tabBarActiveTextColor="#111111"//文字颜色
+                        tabBarBackgroundColor="#CCCCCC"
+                        tabBarActiveTextColor="#3d8afe"//文字颜色
                         tabBarInactiveTextColor="#999"//未被选中的文字颜色
                         tabBarUnderlineColor='#FF0000'
-                        tabBarPosition="overlayBottom"
+                        tabBarPosition="bottom"
                         onChangeTab={(obj) => {
-                            console.log('index:' + obj.i);
-
-                        }
-                        }>
-                        <ScrollView tabLabel="第1"
-                            contentContainerStyle={styles.contentContainer}>
+                            this.setState({
+                                type: this.state.str2[obj.i],
+                            });
+                            console.log(obj.i + "----type-" + this.state.type);
+                        }}>
+                        <ScrollView tabLabel="战争"
+                                    contentContainerStyle={styles.contentContainer}>
                             <ListView
                                 style={{margin: 4}}
                                 dataSource={this.state.dataSource}
@@ -122,22 +125,76 @@ export default class ComNews extends Component {
                                 }/>
                             {/*<Text>请求结果是：{this.state.jsonStr}</Text>*/}
                         </ScrollView>
-                        <ComB tabLabel="第二"/>
-                        <ComNews tabLabel="新闻"/>
+                        <ScrollView tabLabel="教育"
+                                    contentContainerStyle={styles.contentContainer}>
+                            <ListView
+                                style={{margin: 4}}
+                                dataSource={this.state.dataSource}
+                                renderRow={(rowData) =>
+                                    <View style={{flexDirection: 'row', margin: 2, padding: 4,}}>
+                                        <Image style={{height: 60, width: 40}}
+                                               source={{uri: rowData.imgurl}}>
+                                        </Image>
+                                        <View style={{
+                                            backgroundColor: '#1b1d1d',
+                                            flex: 1,
+                                            marginLeft: 6,
+                                            justifyContent: 'space-around'
+                                        }}>
+                                            <Text style={{color: "#cef4e3", flexWrap: 'wrap'}} onPress={() => {
+                                                this.refs.toast.show('文章内容：' + rowData.docurl);
+                                                const {navigator} = this.props;
+                                                if (navigator) {
+                                                    navigator.push({
+                                                        name: 'ComWebView',
+                                                        params: {
+                                                            intentNews: rowData.docurl,
+                                                        },
+                                                    })
+                                                }
+                                            }}>{rowData.title}</Text>
+                                            <Text style={{color: "#82a1a8"}}>{rowData.time}</Text>
+                                        </View>
+                                    </View>
+                                }/>
+                            {/*<Text>请求结果是：{this.state.jsonStr}</Text>*/}
+                        </ScrollView>
+                        <ScrollView tabLabel="体育"
+                                    contentContainerStyle={styles.contentContainer}>
+                            <ListView
+                                style={{margin: 4}}
+                                dataSource={this.state.dataSource}
+                                renderRow={(rowData) =>
+                                    <View style={{flexDirection: 'row', margin: 2, padding: 4,}}>
+                                        <Image style={{height: 60, width: 40}}
+                                               source={{uri: rowData.imgurl}}>
+                                        </Image>
+                                        <View style={{
+                                            backgroundColor: '#1b1d1d',
+                                            flex: 1,
+                                            marginLeft: 6,
+                                            justifyContent: 'space-around'
+                                        }}>
+                                            <Text style={{color: "#cef4e3", flexWrap: 'wrap'}} onPress={() => {
+                                                this.refs.toast.show('文章内容：' + rowData.docurl);
+                                                const {navigator} = this.props;
+                                                if (navigator) {
+                                                    navigator.push({
+                                                        name: 'ComWebView',
+                                                        params: {
+                                                            intentNews: rowData.docurl,
+                                                        },
+                                                    })
+                                                }
+                                            }}>{rowData.title}</Text>
+                                            <Text style={{color: "#82a1a8"}}>{rowData.time}</Text>
+                                        </View>
+                                    </View>
+                                }/>
+                            {/*<Text>请求结果是：{this.state.jsonStr}</Text>*/}
+                        </ScrollView>
                     </ScrollableTabView>
                     <View style={{flexDirection: 'row',}}>
-                        <TouchableHighlight
-                            style={styles.btn}
-                            underlayColor="rgb(33, 222, 155)"
-                            activeOpacity={0.5}
-                            onPress={() => {
-                                this.setState({
-                                    type: this.state.str2[this.state.i],
-                                    i: this.state.i + 1,
-                                });
-                            }}>
-                            <Text style={{color: '#F5FCFF', fontSize: 20}}>上一个</Text>
-                        </TouchableHighlight>
                         <TouchableHighlight
                             style={styles.btn}
                             underlayColor="rgb(33, 222, 155)"
@@ -146,18 +203,6 @@ export default class ComNews extends Component {
                                 this.getMoviesFromApiAsync.bind(this)
                             )}>
                             <Text style={{color: '#F5FCFF', fontSize: 20}}>刷新</Text>
-                        </TouchableHighlight>
-                        <TouchableHighlight
-                            style={styles.btn}
-                            underlayColor="rgb(33, 222, 155)"
-                            activeOpacity={0.5}
-                            onPress={() => {
-                                this.setState({
-                                    type: this.state.str2[this.state.i],
-                                    i: this.state.i + 1,
-                                })
-                            }}>
-                            <Text style={{color: '#F5FCFF', fontSize: 20}}>下一个</Text>
                         </TouchableHighlight>
                     </View>
                 </Image>

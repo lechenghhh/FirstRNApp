@@ -2,7 +2,7 @@
  * Created by 乐城 on 2017/3/13.
  * http://www.jianshu.com/p/b7788c3d106e
  * https://www.npmjs.com/pinstall react-native-scrollable-tab-view --saveackage/react-native-scrollable-tab-view
- * Run npm install react-native-scrollable-tab-view --save//实验了不行
+ * Run npm install react-native-scrollable-tab-view --save//
  * npm i react-native-scrollable-tab-view --save //应该是这个才对
  *
  var ScrollableTabView = require('react-native-scrollable-tab-view');
@@ -50,8 +50,8 @@ export default class TableView extends Component {
                 }
                 }>
                 <ComA tabLabel="第一"/>
-                <ComB tabLabel="第二"/>
-                <ComNews tabLabel="新闻"/>
+                {/*<ComB tabLabel="第二"/>*/}
+                {/*<ComNews tabLabel="新闻"/>*/}
             </ScrollableTabView>
         );
     }
