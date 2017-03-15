@@ -34,6 +34,7 @@ import ComWebView from './js/component/ComWebView'
 import ModalDemo from './js/test/ModalDemo'
 import FetchG from './js/test/FetchG'
 import TableView from './js/test/TableView'
+import TabNavi from './js/test/TabNavi'
 
 export default class setup extends Component {
     constructor(props) {
@@ -80,6 +81,8 @@ export default class setup extends Component {
                                 return (<FetchG navigator={nav} title="FetchG"/>);
                             case 'TableView':
                                 return (<TableView navigator={nav} title="TableView"/>);
+                            case 'TabNavi':
+                                return (<TabNavi navigator={nav} title="TabNavi"/>);
                         }
                     }}
 

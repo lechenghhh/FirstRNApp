@@ -21,15 +21,15 @@ import {
 } from 'react-native';
 import Toast, {DURATION} from 'react-native-easy-toast'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
-// import ComA from '../component/ComA'
-// import ComB from '../component/ComC'
+import ComA from '../component/ComA'
+import ComB from '../component/ComC'
 
-export default class ComNews extends Component {
+export default class ComNewsC extends Component {
     constructor(props) {
         super(props)
         this.state = {
             dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),                             //list数据源2
-            type: 'war',
+            type: 'sport',
             jsonStr: '',
             str2: new Array('war', 'tech', 'sport'),
             // , 'edu', 'ent', 'money', 'travel', 'gupiao', 'lady'),
@@ -113,17 +113,17 @@ export default class ComNews extends Component {
                             }/>
                         {/*<Text>请求结果是：{this.state.jsonStr}</Text>*/}
                     </ScrollView>
-                    <View style={{flexDirection: 'row',}}>
-                        <TouchableHighlight
-                            style={styles.btn}
-                            underlayColor="rgb(33, 222, 155)"
-                            activeOpacity={0.5}
-                            onPress={(
-                                this.getMoviesFromApiAsync.bind(this)
-                            )}>
-                            <Text style={{color: '#F5FCFF', fontSize: 20}}>刷新</Text>
-                        </TouchableHighlight>
-                    </View>
+                    {/*<View style={{flexDirection: 'row',}}>*/}
+                        {/*<TouchableHighlight*/}
+                            {/*style={styles.btn}*/}
+                            {/*underlayColor="rgb(33, 222, 155)"*/}
+                            {/*activeOpacity={0.5}*/}
+                            {/*onPress={(*/}
+                                {/*this.getMoviesFromApiAsync.bind(this)*/}
+                            {/*)}>*/}
+                            {/*<Text style={{color: '#F5FCFF', fontSize: 20}}>刷新</Text>*/}
+                        {/*</TouchableHighlight>*/}
+                    {/*</View>*/}
                 </Image>
                 <Toast ref="toast" style={{backgroundColor: '#f4485f', borderRadius: 10}}/>
             </View>

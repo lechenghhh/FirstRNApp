@@ -43,7 +43,7 @@ export default class ComA extends Component {
                     this.setState({
                         position: this.state.position + 1,
                         position2: position2,
-                    })
+                    });
                 }}>
                     按钮获取refs
                 </Text>
