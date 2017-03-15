@@ -114,18 +114,21 @@ export default class ComNews extends Component {
                         {/*<Text>请求结果是：{this.state.jsonStr}</Text>*/}
                     </ScrollView>
                     {/*<View style={{flexDirection: 'row',}}>
-                        <TouchableHighlight
-                            style={styles.btn}
-                            underlayColor="rgb(33, 222, 155)"
-                            activeOpacity={0.5}
-                            onPress={(
-                                this.getMoviesFromApiAsync.bind(this)
-                            )}>
-                            <Text style={{color: '#F5FCFF', fontSize: 20}}>刷新</Text>
-                        </TouchableHighlight>
-                    </View>*/}
+                     <TouchableHighlight
+                     style={styles.btn}
+                     underlayColor="rgb(33, 222, 155)"
+                     activeOpacity={0.5}
+                     onPress={(
+                     this.getMoviesFromApiAsync.bind(this)
+                     )}>
+                     <Text style={{color: '#F5FCFF', fontSize: 20}}>刷新</Text>
+                     </TouchableHighlight>
+                     </View>*/}
                 </Image>
-                <Toast ref="toast" style={{backgroundColor: '#f4485f', borderRadius: 10}}/>
+                <Toast ref="toast" style={{
+                    backgroundColor: '#f4485f', borderRadius: 10,
+                    marginBottom: 30,
+                }}/>
             </View>
         );
     }
