@@ -23,19 +23,28 @@ import TabNavigator from 'react-native-tab-navigator';
 import ComNews from '../component/ComNews'
 import ComNewsB from '../component/ComNewsB'
 import ComNewsC from '../component/ComNewsC'
+import ComWebView from '../component/ComWebView'
+
 
 export default class HomeUI extends Component {
     constructor(props) {
         super(props);           //这一句不能省略，照抄即可
         this.state = {
-            selectedTab: 'war', //默认选中home
+            selectedTab: 'war' //默认选中home
         }
     }
 
     render() {
         return (
             <TabNavigator
-                tabBarStyle={{height: 48}}>
+                tabBarStyle={{height: 48}}
+                renderScene={(route, nav) => {
+                    let Component = route.component;
+                    switch (route.name) {
+                        case 'Main':
+                            return <Main navigator={nav} title="Main"/>
+                    }
+                }}>
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'war'}
                     title="战争" //Tab文字
@@ -46,7 +55,7 @@ export default class HomeUI extends Component {
                         <Image style={styles.img}
                                source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1161582&size=32'} }/>}//选中图标
                     badgeText="9+"//消息数目
-                    onPress={() => this.setState({selectedTab: 'home'})}>
+                    onPress={() => this.setState({selectedTab: 'war'})}>
                     <ComNews/>
                 </TabNavigator.Item>
                 <TabNavigator.Item
@@ -58,7 +67,7 @@ export default class HomeUI extends Component {
                     renderSelectedIcon={() =>
                         <Image style={styles.img}
                                source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1161582&size=32'}}/>}
-                    onPress={() => this.setState({selectedTab: 'setting'})}>
+                    onPress={() => this.setState({selectedTab: 'tech'})}>
                     <ComNewsB/>
                 </TabNavigator.Item>
                 <TabNavigator.Item
@@ -70,7 +79,7 @@ export default class HomeUI extends Component {
                     renderSelectedIcon={() =>
                         <Image style={styles.img}
                                source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1161582&size=32'}}/>}
-                    onPress={() => this.setState({selectedTab: 'setting'})}>
+                    onPress={() => this.setState({selectedTab: 'sport'})}>
                     <ComNewsC/>
                 </TabNavigator.Item>
             </TabNavigator>

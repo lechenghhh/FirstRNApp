@@ -113,7 +113,7 @@ export default class ComNews extends Component {
                             }/>
                         {/*<Text>请求结果是：{this.state.jsonStr}</Text>*/}
                     </ScrollView>
-                    <View style={{flexDirection: 'row',}}>
+                    {/*<View style={{flexDirection: 'row',}}>
                         <TouchableHighlight
                             style={styles.btn}
                             underlayColor="rgb(33, 222, 155)"
@@ -123,7 +123,7 @@ export default class ComNews extends Component {
                             )}>
                             <Text style={{color: '#F5FCFF', fontSize: 20}}>刷新</Text>
                         </TouchableHighlight>
-                    </View>
+                    </View>*/}
                 </Image>
                 <Toast ref="toast" style={{backgroundColor: '#f4485f', borderRadius: 10}}/>
             </View>

@@ -13,7 +13,7 @@ import {
     TextInput,
 } from 'react-native';
 
-export default class Com_b extends Component {
+export default class ComB extends Component {
 
     constructor(props) {
         super(props);
