@@ -124,7 +124,10 @@ export default class ComNews extends Component {
                      </TouchableHighlight>
                      </View>*/}
                 </Image>
-                <Toast ref="toast" style={{backgroundColor: '#f4485f', borderRadius: 10}}/>
+                <Toast ref="toast" style={{
+                    backgroundColor: '#f4485f', borderRadius: 10,
+                    marginBottom: 30,
+                }}/>
             </View>
         );
     }

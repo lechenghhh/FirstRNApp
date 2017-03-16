@@ -37,20 +37,20 @@ export default class HomeUI extends Component {
     render() {
         return (
             <TabNavigator
-                tabBarStyle={{height: 48}}
+                tabBarStyle={{height: 52}}
                 renderScene={(route, nav) => {
                     let Component = route.component;
                     switch (route.name) {
-                        case 'Main':
-                            return <Main navigator={nav} title="Main"/>
+                        case 'ComWebView':
+                            return <ComWebView {...route.params} navigator={nav} title="ComWebView"/>
                     }
                 }}>
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'war'}
-                    title="战争" //Tab文字
+                    title="军事" //Tab文字
                     renderIcon={() =>
                         <Image style={styles.img}
-                               source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1200359&size=32'} }/>}//默认图标
+                               source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1172135&size=32'} }/>}//默认图标
                     renderSelectedIcon={() =>
                         <Image style={styles.img}
                                source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1161582&size=32'} }/>}//选中图标
@@ -64,7 +64,7 @@ export default class HomeUI extends Component {
                     title="科技"
                     renderIcon={() =>
                         <Image style={styles.img}
-                               source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1200361&size=32'}}/>}
+                               source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1171940&size=32'}}/>}
                     renderSelectedIcon={() =>
                         <Image style={styles.img}
                                source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1161582&size=32'}}/>}
@@ -76,7 +76,7 @@ export default class HomeUI extends Component {
                     title="体育"
                     renderIcon={() =>
                         <Image style={styles.img}
-                               source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1200361&size=32'}}/>}
+                               source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1171920&size=32'}}/>}
                     renderSelectedIcon={() =>
                         <Image style={styles.img}
                                source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1161582&size=32'}}/>}
