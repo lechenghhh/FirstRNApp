@@ -21,10 +21,12 @@ import {
 } from 'react-native';
 import Toast, {DURATION} from 'react-native-easy-toast'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
+import ComWebView from  './ComWebView'
 // import ComA from '../component/ComA'
 // import ComB from '../component/ComC'
 
 export default class ComNews extends Component {
+
     constructor(props) {
         super(props)
         this.state = {
@@ -40,10 +42,6 @@ export default class ComNews extends Component {
     componentDidMount() {
         this.getMoviesFromApiAsync();           //每次创建的时候自动加载1次
     }
-
-    // componentDidUpdate() {
-    //     this.getMoviesFromApiAsync();           //每次更新视图的时候自动加载
-    // }
 
     getMoviesFromApiAsync() {       //Http异步请求
         fetch('http://wangyi.butterfly.mopaasapp.com/news/api?type='
@@ -77,7 +75,7 @@ export default class ComNews extends Component {
                                           name: 'Main',
                                       })
                                   }
-                              }}>网易新闻 - {this.state.type}</Text>
+                              }}>网易新闻 - {this.state.type}{this.props.passValue}</Text>
                     </View>
                     <ScrollView tabLabel="战争"
                                 contentContainerStyle={styles.contentContainer}>
@@ -95,18 +93,19 @@ export default class ComNews extends Component {
                                         marginLeft: 6,
                                         justifyContent: 'space-around'
                                     }}>
-                                        <Text style={{color: "#cef4e3", flexWrap: 'wrap'}} onPress={() => {
-                                            this.refs.toast.show('文章内容：' + rowData.docurl);
-                                            const {navigator} = this.props;
-                                            if (navigator) {
-                                                navigator.push({
-                                                    name: 'ComWebView',
-                                                    params: {
-                                                        intentNews: rowData.docurl,
-                                                    },
-                                                })
-                                            }
-                                        }}>{rowData.title}</Text>
+                                        <Text style={{color: "#cef4e3", flexWrap: 'wrap'}}
+                                              onPress={() => {
+                                                  this.refs.toast.show('文章内容：' + rowData.docurl);
+                                                  const {navigator} = this.props;
+                                                  if (navigator) {
+                                                      navigator.push({
+                                                          name: 'ComWebView',
+                                                          params: {
+                                                              intentNews: rowData.docurl,
+                                                          },
+                                                      })
+                                                  }
+                                              }}>{rowData.title}</Text>
                                         <Text style={{color: "#82a1a8"}}>{rowData.time}</Text>
                                     </View>
                                 </View>
@@ -114,16 +113,16 @@ export default class ComNews extends Component {
                         {/*<Text>请求结果是：{this.state.jsonStr}</Text>*/}
                     </ScrollView>
                     {/*<View style={{flexDirection: 'row',}}>
-                        <TouchableHighlight
-                            style={styles.btn}
-                            underlayColor="rgb(33, 222, 155)"
-                            activeOpacity={0.5}
-                            onPress={(
-                                this.getMoviesFromApiAsync.bind(this)
-                            )}>
-                            <Text style={{color: '#F5FCFF', fontSize: 20}}>刷新</Text>
-                        </TouchableHighlight>
-                    </View>*/}
+                     <TouchableHighlight
+                     style={styles.btn}
+                     underlayColor="rgb(33, 222, 155)"
+                     activeOpacity={0.5}
+                     onPress={(
+                     this.getMoviesFromApiAsync.bind(this)
+                     )}>
+                     <Text style={{color: '#F5FCFF', fontSize: 20}}>刷新</Text>
+                     </TouchableHighlight>
+                     </View>*/}
                 </Image>
                 <Toast ref="toast" style={{backgroundColor: '#f4485f', borderRadius: 10}}/>
             </View>
@@ -132,19 +131,19 @@ export default class ComNews extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        // justifyContent: 'center',
-        // alignItems: 'center',
-    },
-    btn: {
-        height: 40,
-        justifyContent: 'center',
-        flex: 1,
-        alignItems: 'center',
-        padding: 2,
-        backgroundColor: "#3d8afe",
+        container: {
+            flex: 1,
+            // justifyContent: 'center',
+            // alignItems: 'center',
+        },
+        btn: {
+            height: 40,
+            justifyContent: 'center',
+            flex: 1,
+            alignItems: 'center',
+            padding: 2,
+            backgroundColor: "#3d8afe",
 
-    }
-});
+        }
+    });
 // AppRegistry.registerComponent('ComHttp', () => ComHttp);

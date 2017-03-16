@@ -56,7 +56,8 @@ export default class HomeUI extends Component {
                                source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1161582&size=32'} }/>}//选中图标
                     badgeText="9+"//消息数目
                     onPress={() => this.setState({selectedTab: 'war'})}>
-                    <ComNews/>
+                    <ComNews navigatorPush={this.props.navigator}
+                             passValue='我是一个父组件传给子组件的值'/>
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'tech'}
