@@ -1,5 +1,5 @@
 /**
- * Created by 乐城 on 2017/3/9.
+ * adb shell input keyevent 82   2017/3/9.
  */
 import React from 'react';
 import {

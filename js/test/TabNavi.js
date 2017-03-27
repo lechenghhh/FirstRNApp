@@ -17,14 +17,12 @@ import {
     Image,
     TextInput,
     TouchableHighlight,
-    AlertIOS,
 } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import ComNews from '../component/ComNews'
 import ComNewsB from '../component/ComNewsB'
 import ComNewsC from '../component/ComNewsC'
 import ComWebView from '../component/ComWebView'
-
 
 export default class HomeUI extends Component {
     constructor(props) {
