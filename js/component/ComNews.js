@@ -3,9 +3,12 @@
  * https://github.com/facebook/react-native
  * @flow
  */
-/*      api文档地址：
- *http://wangyi.butterfly.mopaasapp.com
- */
+
+//      api文档地址：
+//http://wangyi.butterfly.mopaasapp.com
+//Toast使用说明
+//http://www.devio.org/2016/09/13/%E4%B8%80%E6%AC%BE%E7%AE%80%E5%8D%95%E6%98%93%E7%94%A8%E7%9A%84-Toast-%E7%BB%84%E4%BB%B6-%E6%94%AF%E6%8C%81-Android&iOS/
+//
 import React, {Component} from 'react';
 import {
     AppRegistry,
@@ -134,19 +137,19 @@ export default class ComNews extends Component {
 }
 
 const styles = StyleSheet.create({
-        container: {
-            flex: 1,
-            // justifyContent: 'center',
-            // alignItems: 'center',
-        },
-        btn: {
-            height: 40,
-            justifyContent: 'center',
-            flex: 1,
-            alignItems: 'center',
-            padding: 2,
-            backgroundColor: "#3d8afe",
+    container: {
+        flex: 1,
+        // justifyContent: 'center',
+        // alignItems: 'center',
+    },
+    btn: {
+        height: 40,
+        justifyContent: 'center',
+        flex: 1,
+        alignItems: 'center',
+        padding: 2,
+        backgroundColor: "#3d8afe",
 
-        }
-    });
+    }
+});
 // AppRegistry.registerComponent('ComHttp', () => ComHttp);
