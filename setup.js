@@ -43,7 +43,6 @@ export default class setup extends Component {
             intent: '',
             intent2: '',
         }
-
     }
 
     render() {
