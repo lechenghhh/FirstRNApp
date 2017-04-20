@@ -77,7 +77,7 @@ export default class ComNews extends Component {
                             dataSource={this.state.dataSource}
                             renderRow={(rowData) =>
                                 <View style={{flexDirection: 'row', margin: 2, padding: 4,}}>
-                                    <Image style={{height: 60, width: 40}}
+                                    <Image style={{height: 60, width: 60}}
                                            source={{uri: rowData.imgurl}}>
                                     </Image>
                                     <View style={{

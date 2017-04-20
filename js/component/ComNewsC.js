@@ -40,7 +40,6 @@ export default class ComNewsC extends Component {
         this.getMoviesFromApiAsync();           //每次创建的时候自动加载1次
     }
 
-
     getMoviesFromApiAsync() {       //Http异步请求
         fetch('http://wangyi.butterfly.mopaasapp.com/news/api?type='
             + this.state.type
@@ -99,8 +98,6 @@ export default class ComNewsC extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // justifyContent: 'center',
-        // alignItems: 'center',
     },
     btn: {
         height: 40,
