@@ -27,15 +27,6 @@ export default class ComB extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={{flexDirection: 'row',}}>
-                    <Text style={{backgroundColor: '#F43E06', flex: 1, color: "#ffffff", padding: 2,}}
-                          onPress={() => {
-                              const {navigator} = this.props;
-                              if (navigator) {
-                                  navigator.pop();
-                              }
-                          }}></Text>
-                </View>
                 <Text style={{width: this.state.size, height: this.state.size, backgroundColor: '#f46201'}}>
                     数值{this.state.position}
                 </Text>
