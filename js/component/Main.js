@@ -23,7 +23,7 @@ export default class Main extends React.Component {
             dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),                             //list数据源2
             strArr: new Array('ComA', 'ComB', 'ComC', 'ComDParent','ComHttp',
                 'ComLifeCycle', 'ComListView', 'ComLogin', 'ComNews','TabNavi',
-                'ComWebView', 'ModalDemo', 'FetchG', 'TableView','TestWebView',
+                'ComWebView', 'ModalDemo', 'FetchG', 'TableView','',
                 '','','','','',),
         }
     }

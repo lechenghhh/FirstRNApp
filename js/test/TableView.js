@@ -49,7 +49,7 @@ export default class TableView extends Component {
                     console.log('index:' + obj.i);
                 }
                 }>
-                <ComA tabLabel="第一"/>
+                <View tabLabel="第一"/>
                 {/*<ComB tabLabel="第二"/>*/}
                 {/*<ComNews tabLabel="新闻"/>*/}
             </ScrollableTabView>
