@@ -44,6 +44,7 @@ export default class ComA extends Component {
                         position: this.state.position + 1,
                         position2: position2,
                     });
+                    alert('通知:' + position2);
                 }}>
                     按钮获取refs
                 </Text>

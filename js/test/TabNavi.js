@@ -35,7 +35,6 @@ export default class HomeUI extends Component {
 
     componentDidMount() {    //添加DeviceEventEmitter，接收来自ComNews传递过来的消息
         this.subscription = DeviceEventEmitter.addListener('userNameDidChange', (msg) => {
-            alert('通知:' + msg);
             const {navigator} = this.props;
             if (navigator) {
                 navigator.push({
