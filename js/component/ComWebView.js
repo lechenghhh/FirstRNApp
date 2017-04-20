@@ -1,3 +1,6 @@
+/*
+ * http://www.tuicool.com/articles/uQfiumm
+ * */
 import React, {Component} from 'react';
 import {
     StyleSheet,
@@ -25,24 +28,46 @@ export default class ComWebView extends Component {
         });
     }
 
+
     render() {
         return (
             <View style={styles.container}>
                 <Text style={{backgroundColor: '#F43E06', color: "#ffffff", padding: 2, fontSize: 18,}}
                       onPress={() => {
-
                           const {navigator} = this.props;
                           if (navigator) {
                               navigator.pop();//退出
                           }
-                      }}>{' ＜- 返回'}</Text>
+                      }}>{' X 关闭'}</Text>
                 <WebView
+                    ref={WEBVIEW_REF}
                     style={{width: width, height: height - 20, backgroundColor: 'gray'}}
                     source={{uri: this.state.getIntent, method: 'GET'}}
-                    javaScriptEnabled={true}
+                    startInLoadingState={true}
                     domStorageEnabled={true}
-                    scalesPageToFit={false}
+                    javaScriptEnabled={true}
+                    automaticallyAdjustContentInsets={true}
                 />
+                <View style={{flexDirection: 'row'}}>
+                    <View style={styles.ViewForTextStyle}>
+                        <Text style={{
+                            color: "#ffffff", padding: 2, fontSize: 24, flex: 1, justifyContent: 'center',
+                        }}
+                              onPress={() => {
+                                  this.refs[WEBVIEW_REF].goBack();
+                              }}>{' <-'}</Text>
+                    </View>
+                    <View style={styles.ViewForTextStyle}>
+                        <Text style={{
+                            color: "#ffffff", padding: 2, fontSize: 24, flex: 1, justifyContent: 'center',
+                        }}
+                              onPress={() => {
+                                  this.refs[WEBVIEW_REF].goForward();
+                                  {/*this.refs[WEBVIEW_REF].*/
+                                  }
+                              }}>{' ->'}</Text>
+                    </View>
+                </View>
             </View>
         );
     }
@@ -51,6 +76,12 @@ export default class ComWebView extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f2f2f2',
     },
-});  
+    ViewForTextStyle: {
+        flex: 1,
+        height: 32,
+        backgroundColor: '#0CBEF4',
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
+});

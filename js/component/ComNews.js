@@ -70,17 +70,6 @@ export default class ComNews extends Component {
             <View style={styles.container}>
                 <Image style={{flex: 1,}}
                        source={{uri: 'http://appserver.m.bing.net/BackgroundImageService/TodayImageService.svc/GetTodayImage?dateOffset=0&urlEncodeHeaders=true&osName=windowsPhone&osVersion=8.10&orientation=480x800&deviceName=WP8&mkt=en-US'}}>
-                    <View style={{flexDirection: 'row',}}>
-                        <Text style={{backgroundColor: '#F43E06', flex: 1, color: "#ffffff", padding: 5,}}
-                              onPress={() => {
-                                  const {navigator} = this.props;
-                                  if (navigator) {
-                                      navigator.push({
-                                          name: 'Main',
-                                      })
-                                  }
-                              }}>网易新闻 - {this.state.type}{this.props.passValue}</Text>
-                    </View>
                     <ScrollView tabLabel="战争"
                                 contentContainerStyle={styles.contentContainer}>
                         <ListView
@@ -119,17 +108,6 @@ export default class ComNews extends Component {
                             }/>
                         {/*<Text>请求结果是：{this.state.jsonStr}</Text>*/}
                     </ScrollView>
-                    {/*<View style={{flexDirection: 'row',}}>
-                     <TouchableHighlight
-                     style={styles.btn}
-                     underlayColor="rgb(33, 222, 155)"
-                     activeOpacity={0.5}
-                     onPress={(
-                     this.getMoviesFromApiAsync.bind(this)
-                     )}>
-                     <Text style={{color: '#F5FCFF', fontSize: 20}}>刷新</Text>
-                     </TouchableHighlight>
-                     </View>*/}
                 </Image>
                 <Toast ref="toast" style={{
                     backgroundColor: '#f4485f', borderRadius: 10,

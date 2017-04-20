@@ -75,18 +75,6 @@ export default class ComNewsB extends Component {
             <View style={styles.container}>
                 <Image style={{flex: 1,}}
                        source={{uri: 'http://appserver.m.bing.net/BackgroundImageService/TodayImageService.svc/GetTodayImage?dateOffset=0&urlEncodeHeaders=true&osName=windowsPhone&osVersion=8.10&orientation=480x800&deviceName=WP8&mkt=en-US'}}>
-                    <View style={{flexDirection: 'row',}}>
-                        <Text style={{backgroundColor: '#F43E06', flex: 1, color: "#ffffff", padding: 5,}}
-                              onPress={() => {
-                                  //挪到TabNavi的    componentDidMount方法中去了
-                                  {/*const {navigator} = this.props;
-                                  if (navigator) {
-                                      navigator.push({
-                                          name: 'Main',
-                                      })
-                                  }*/}
-                              }}>网易新闻 - {this.state.type}</Text>
-                    </View>
                     <ScrollView tabLabel="战争"
                                 contentContainerStyle={styles.contentContainer}>
                         <ListView
@@ -94,7 +82,7 @@ export default class ComNewsB extends Component {
                             dataSource={this.state.dataSource}
                             renderRow={(rowData) =>
                                 <View style={{flexDirection: 'row', margin: 2, padding: 4,}}>
-                                    <Image style={{height: 60, width: 40}}
+                                    <Image style={{height: 60, width: 60}}
                                            source={{uri: rowData.imgurl}}>
                                     </Image>
                                     <View style={{
