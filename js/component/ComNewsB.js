@@ -5,6 +5,8 @@
  */
 /*      api文档地址：
  *http://wangyi.butterfly.mopaasapp.com
+ * 处理一些背景透明的童鞋,可以试试这两句代码
+ backgroundColor:'transparent',或者backgroundColor:'rgba(0,0,0,0)',
  */
 import React, {Component} from 'react';
 import {
@@ -18,11 +20,13 @@ import {
     TextInput,
     TouchableHighlight,
     AlertIOS,
+    DeviceEventEmitter,
 } from 'react-native';
 import Toast, {DURATION} from 'react-native-easy-toast'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 import ComA from '../component/ComA'
 import ComB from '../component/ComC'
+import ComWebView from '../component/ComWebView'
 
 export default class ComNewsB extends Component {
     constructor(props) {
@@ -40,10 +44,6 @@ export default class ComNewsB extends Component {
     componentDidMount() {
         this.getMoviesFromApiAsync();           //每次创建的时候自动加载1次
     }
-
-    // componentDidUpdate() {
-    //     this.getMoviesFromApiAsync();           //每次更新视图的时候自动加载
-    // }
 
     getMoviesFromApiAsync() {       //Http异步请求
         fetch('http://wangyi.butterfly.mopaasapp.com/news/api?type='
@@ -63,6 +63,13 @@ export default class ComNewsB extends Component {
             });
     };
 
+    start2(data) {
+        {
+            this.refs.toast.show('文章内容：' + data.docurl);
+            DeviceEventEmitter.emit('userNameDidChange', data.docurl);
+        }
+    }
+
     render() {                  //onReusme
         return (
             <View style={styles.container}>
@@ -71,12 +78,13 @@ export default class ComNewsB extends Component {
                     <View style={{flexDirection: 'row',}}>
                         <Text style={{backgroundColor: '#F43E06', flex: 1, color: "#ffffff", padding: 5,}}
                               onPress={() => {
-                                  const {navigator} = this.props;
+                                  //挪到TabNavi的    componentDidMount方法中去了
+                                  {/*const {navigator} = this.props;
                                   if (navigator) {
                                       navigator.push({
                                           name: 'Main',
                                       })
-                                  }
+                                  }*/}
                               }}>网易新闻 - {this.state.type}</Text>
                     </View>
                     <ScrollView tabLabel="战争"
@@ -95,37 +103,16 @@ export default class ComNewsB extends Component {
                                         marginLeft: 6,
                                         justifyContent: 'space-around'
                                     }}>
-                                        <Text style={{color: "#cef4e3", flexWrap: 'wrap'}} onPress={() => {
-                                            this.refs.toast.show('文章内容：' + rowData.docurl);
-                                            const {navigator} = this.props;
-                                            if (navigator) {
-                                                navigator.push({
-                                                    name: 'ComWebView',
-                                                    params: {
-                                                        intentNews: rowData.docurl,
-                                                    },
-                                                })
-                                            }
-                                        }}>{rowData.title}</Text>
+                                        <Text style={{color: "#cef4e3", flexWrap: 'wrap'}}
+                                              onPress={() => this.start2(rowData)
+                                              }>{rowData.title}</Text>
                                         <Text style={{color: "#82a1a8"}}>{rowData.time}</Text>
                                     </View>
                                 </View>
                             }/>
-                        {/*<Text>请求结果是：{this.state.jsonStr}</Text>*/}
                     </ScrollView>
-                   {/* <View style={{flexDirection: 'row',}}>
-                        <TouchableHighlight
-                            style={styles.btn}
-                            underlayColor="rgb(33, 222, 155)"
-                            activeOpacity={0.5}
-                            onPress={(
-                                this.getMoviesFromApiAsync.bind(this)
-                            )}>
-                            <Text style={{color: '#F5FCFF', fontSize: 20}}>刷新</Text>
-                        </TouchableHighlight>
-                    </View>*/}
                 </Image>
-                <Toast ref="toast" style={{backgroundColor: '#f4485f', borderRadius: 10}}/>
+                <Toast ref="toast" style={{backgroundColor: '#e4ff31', borderRadius: 10}}/>
             </View>
         );
     }

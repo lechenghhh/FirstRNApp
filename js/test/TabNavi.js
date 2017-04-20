@@ -17,6 +17,7 @@ import {
     Image,
     TextInput,
     TouchableHighlight,
+    DeviceEventEmitter,
 } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import ComNews from '../component/ComNews'
@@ -28,8 +29,27 @@ export default class HomeUI extends Component {
     constructor(props) {
         super(props);           //这一句不能省略，照抄即可
         this.state = {
-            selectedTab: 'war' //默认选中home
+            selectedTab: 'war', //默认选中home
         }
+    }
+
+    componentDidMount() {    //添加DeviceEventEmitter，接收来自ComNews传递过来的消息
+        this.subscription = DeviceEventEmitter.addListener('userNameDidChange', (msg) => {
+            alert('通知:' + msg);
+            const {navigator} = this.props;
+            if (navigator) {
+                navigator.push({
+                    name: 'ComWebView',
+                    params: {
+                        intentNews: msg,
+                    },
+                })
+            }
+        })
+    }
+
+    componentWillUnmount() {
+        this.subscription.remove();         //移除DeviceEventEmitter
     }
 
     render() {
@@ -55,11 +75,11 @@ export default class HomeUI extends Component {
                     badgeText="9+"//消息数目
                     onPress={() => this.setState({selectedTab: 'war'})}>
                     <ComNews navigatorPush={this.props.navigator}
-                             passValue='我是一个父组件传给子组件的值'/>
+                             passValue='我是父组件传给子组件的值'/>
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'tech'}
-                    title="科技"
+                    title="教育"
                     renderIcon={() =>
                         <Image style={styles.img}
                                source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1171940&size=32'}}/>}

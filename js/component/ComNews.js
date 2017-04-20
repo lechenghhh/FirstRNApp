@@ -8,6 +8,8 @@
 //http://wangyi.butterfly.mopaasapp.com
 //Toast使用说明
 //http://www.devio.org/2016/09/13/%E4%B8%80%E6%AC%BE%E7%AE%80%E5%8D%95%E6%98%93%E7%94%A8%E7%9A%84-Toast-%E7%BB%84%E4%BB%B6-%E6%94%AF%E6%8C%81-Android&iOS/
+//React Native学习之DeviceEventEmitter传值
+//http://www.cnblogs.com/Milo-CTO/p/5957218.html
 //
 import React, {Component} from 'react';
 import {
@@ -20,13 +22,12 @@ import {
     Image,
     TextInput,
     TouchableHighlight,
+    DeviceEventEmitter,
     AlertIOS,
 } from 'react-native';
 import Toast, {DURATION} from 'react-native-easy-toast'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 import ComWebView from  './ComWebView'
-// import ComA from '../component/ComA'
-// import ComB from '../component/ComC'
 
 export default class ComNews extends Component {
 
@@ -99,14 +100,17 @@ export default class ComNews extends Component {
                                         <Text style={{color: "#cef4e3", flexWrap: 'wrap'}}
                                               onPress={() => {
                                                   this.refs.toast.show('文章内容：' + rowData.docurl);
-                                                  const {navigator} = this.props;
-                                                  if (navigator) {
-                                                      navigator.push({
-                                                          name: 'ComWebView',
-                                                          params: {
-                                                              intentNews: rowData.docurl,
-                                                          },
-                                                      })
+                                                  DeviceEventEmitter.emit('userNameDidChange', rowData.docurl);
+                                                  //挪到TabNavi的    componentDidMount方法中去了
+                                                  {/* const {navigator} = this.props;
+                                                   if (navigator) {
+                                                   navigator.push({
+                                                   name: 'ComWebView',
+                                                   params: {
+                                                   intentNews: rowData.docurl,
+                                                   },
+                                                   })
+                                                   }*/
                                                   }
                                               }}>{rowData.title}</Text>
                                         <Text style={{color: "#82a1a8"}}>{rowData.time}</Text>

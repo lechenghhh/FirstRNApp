@@ -18,11 +18,10 @@ import {
     TextInput,
     TouchableHighlight,
     AlertIOS,
+    DeviceEventEmitter,
 } from 'react-native';
 import Toast, {DURATION} from 'react-native-easy-toast'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
-import ComA from '../component/ComA'
-import ComB from '../component/ComC'
 
 export default class ComNewsC extends Component {
     constructor(props) {
@@ -41,9 +40,6 @@ export default class ComNewsC extends Component {
         this.getMoviesFromApiAsync();           //每次创建的时候自动加载1次
     }
 
-    // componentDidUpdate() {
-    //     this.getMoviesFromApiAsync();           //每次更新视图的时候自动加载
-    // }
 
     getMoviesFromApiAsync() {       //Http异步请求
         fetch('http://wangyi.butterfly.mopaasapp.com/news/api?type='
@@ -97,33 +93,13 @@ export default class ComNewsC extends Component {
                                     }}>
                                         <Text style={{color: "#cef4e3", flexWrap: 'wrap'}} onPress={() => {
                                             this.refs.toast.show('文章内容：' + rowData.docurl);
-                                            const {navigator} = this.props;
-                                            if (navigator) {
-                                                navigator.push({
-                                                    name: 'ComWebView',
-                                                    params: {
-                                                        intentNews: rowData.docurl,
-                                                    },
-                                                })
-                                            }
+                                            DeviceEventEmitter.emit('userNameDidChange', rowData.docurl);
                                         }}>{rowData.title}</Text>
                                         <Text style={{color: "#82a1a8"}}>{rowData.time}</Text>
                                     </View>
                                 </View>
                             }/>
-                        {/*<Text>请求结果是：{this.state.jsonStr}</Text>*/}
                     </ScrollView>
-                    {/*<View style={{flexDirection: 'row',}}>*/}
-                        {/*<TouchableHighlight*/}
-                            {/*style={styles.btn}*/}
-                            {/*underlayColor="rgb(33, 222, 155)"*/}
-                            {/*activeOpacity={0.5}*/}
-                            {/*onPress={(*/}
-                                {/*this.getMoviesFromApiAsync.bind(this)*/}
-                            {/*)}>*/}
-                            {/*<Text style={{color: '#F5FCFF', fontSize: 20}}>刷新</Text>*/}
-                        {/*</TouchableHighlight>*/}
-                    {/*</View>*/}
                 </Image>
                 <Toast ref="toast" style={{backgroundColor: '#f4485f', borderRadius: 10}}/>
             </View>
