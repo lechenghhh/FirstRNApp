@@ -74,7 +74,7 @@ export default class HomeUI extends Component {
                     }}>
                     <TabNavigator.Item
                         selected={this.state.selectedTab === 'war'}
-                        title="军事" //Tab文字
+                        title="军 事" //Tab文字
                         renderIcon={() =>
                             <Image style={styles.img}
                                    source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1172135&size=96'} }/>}//默认图标
@@ -87,7 +87,7 @@ export default class HomeUI extends Component {
                     </TabNavigator.Item>
                     <TabNavigator.Item
                         selected={this.state.selectedTab === 'tech'}
-                        title="教育"
+                        title="教 育"
                         renderIcon={() =>
                             <Image style={styles.img}
                                    source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1171940&size=96'}}/>}
@@ -100,7 +100,7 @@ export default class HomeUI extends Component {
                     </TabNavigator.Item>
                     <TabNavigator.Item
                         selected={this.state.selectedTab === 'sport'}
-                        title="体育"
+                        title="体 育"
                         renderIcon={() =>
                             <Image style={styles.img}
                                    source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1172057&size=96'}}/>}
