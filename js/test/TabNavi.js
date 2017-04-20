@@ -67,10 +67,10 @@ export default class HomeUI extends Component {
                     title="军事" //Tab文字
                     renderIcon={() =>
                         <Image style={styles.img}
-                               source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1172135&size=32'} }/>}//默认图标
+                               source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1172135&size=96'} }/>}//默认图标
                     renderSelectedIcon={() =>
                         <Image style={styles.img}
-                               source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1161582&size=32'} }/>}//选中图标
+                               source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1171920&size=96'} }/>}//选中图标
                     badgeText="9+"//消息数目
                     onPress={() => this.setState({selectedTab: 'war'})}>
                     <ComNews navigatorPush={this.props.navigator}
@@ -81,10 +81,10 @@ export default class HomeUI extends Component {
                     title="教育"
                     renderIcon={() =>
                         <Image style={styles.img}
-                               source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1171940&size=32'}}/>}
+                               source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1171940&size=96'}}/>}
                     renderSelectedIcon={() =>
                         <Image style={styles.img}
-                               source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1161582&size=32'}}/>}
+                               source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1171920&size=96'}}/>}
                     onPress={() => this.setState({selectedTab: 'tech'})}>
                     <ComNewsB/>
                 </TabNavigator.Item>
@@ -93,10 +93,10 @@ export default class HomeUI extends Component {
                     title="体育"
                     renderIcon={() =>
                         <Image style={styles.img}
-                               source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1171920&size=32'}}/>}
+                               source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1172057&size=96'}}/>}
                     renderSelectedIcon={() =>
                         <Image style={styles.img}
-                               source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1161582&size=32'}}/>}
+                               source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1171920&size=96'}}/>}
                     onPress={() => this.setState({selectedTab: 'sport'})}>
                     <ComNewsC/>
                 </TabNavigator.Item>
