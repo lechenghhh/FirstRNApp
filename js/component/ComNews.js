@@ -129,7 +129,7 @@ export default class ComNews extends Component {
                 </Image>
                 <Toast ref="toast" style={{
                     backgroundColor: '#f4485f', borderRadius: 10,
-                    marginBottom: 30,
+                    marginBottom: 50,
                 }}/>
             </View>
         );

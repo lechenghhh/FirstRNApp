@@ -31,6 +31,7 @@ import ComListView from './js/component/ComListView';
 import ComLogin from './js/component/ComLogin';
 import ComNews from './js/component/ComNews'
 import ComWebView from './js/component/ComWebView'
+import ComDParent from './js/component/ComDParent'
 import ModalDemo from './js/test/ModalDemo'
 import FetchG from './js/test/FetchG'
 import TableView from './js/test/TableView'
@@ -80,8 +81,10 @@ export default class setup extends Component {
                                 return (<FetchG navigator={nav} title="FetchG"/>);
                             case 'TableView':
                                 return (<TableView navigator={nav} title="TableView"/>);
+                            case 'ComDParent':
+                                return (<ComDParent navigator={nav} title="ComDParent"/>);
                             case 'TabNavi':
-                                return (<TabNavi navigator={nav} title="TabNavi"/>);
+                                return (<TabNavi {...route.params}navigator={nav} title="TabNavi"/>);
                         }
                     }}
 
