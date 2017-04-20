@@ -40,7 +40,7 @@ export default class ComWebView extends Component {
                           }
                       }}>{' X 关闭'}</Text>
                 <WebView
-                    ref={WEBVIEW_REF}
+                    ref={'WEBVIEW_REF'}
                     style={{width: width, height: height - 20, backgroundColor: 'gray'}}
                     source={{uri: this.state.getIntent, method: 'GET'}}
                     startInLoadingState={true}
