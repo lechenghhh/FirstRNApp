@@ -7,6 +7,8 @@ import {
     StyleSheet,
     Text,
     View,
+    AsyncStorage,
+    DeviceEventEmitter,
     Alert,
     ListView,
 } from 'react-native';
@@ -17,17 +19,33 @@ export default class History extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            hello: '',
-            dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}), //list数据源2
-            strArr: new Array('历史记录', 'ComB', 'ComC', 'ComDParent', 'ComHttp',
-                'ComLifeCycle', 'ComListView',),
-        }
+            dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),                             //list数据源2
+        };
     }
 
-    componentDidMount() {
-        this.setState({
-            dataSource: this.state.dataSource.cloneWithRows(this.state.strArr)
-        })
+    _genRows() {
+        var _this = this;
+        var res2 = '';
+        var arr2 = new Array('');
+        AsyncStorage.getItem('history', function (errs, result) {//读取方法
+            if (!errs) {                        //TODO:错误处理
+                try {
+                    arr2 = result.split(",");
+                } catch (errs) {
+                    console.log('读取失败');
+                }
+                console.log('arr2[1] : ' + arr2[1]);
+                _this.setState({
+                    dataSource: _this.state.dataSource.cloneWithRows(arr2),
+                })
+            }
+            else {
+                console.log('读取失败');
+                _this.setState({
+                    dataSource: _this.state.dataSource.cloneWithRows(arr2),
+                })
+            }
+        });
     }
 
     render() {
@@ -42,10 +60,22 @@ export default class History extends Component {
                               }
                           }}>{' <- 返回'}</Text>
                 </View>
+                <Text style={styles.welcome}
+                      onPress={() => {
+                          this._genRows();
+                      }}>新闻收藏，刷新列表</Text>
                 <ListView
                     dataSource={this.state.dataSource}
                     renderRow={(rowData) =>
-                        <Text style={styles.welcome}>{rowData}</Text>}/>
+                        <Text style={styles.welcome}
+                              onPress={() => {
+                                  DeviceEventEmitter.emit('userNameDidChange', rowData);
+                              }}>{rowData}</Text>}/>
+                <Text style={styles.welcome}
+                      onPress={() => {
+                          AsyncStorage.removeItem('history');
+                          this._genRows();
+                      }}>清空记录</Text>
             </View>
         );
     }

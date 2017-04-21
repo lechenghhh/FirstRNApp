@@ -23,6 +23,7 @@ import {
     TextInput,
     TouchableHighlight,
     DeviceEventEmitter,
+    AsyncStorage,
     AlertIOS,
 } from 'react-native';
 import Toast, {DURATION} from 'react-native-easy-toast'
@@ -37,14 +38,16 @@ export default class ComNews extends Component {
             dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),                             //list数据源2
             type: 'war',
             jsonStr: '',
-            str2: new Array('war', 'tech', 'sport'),
+            str2: new Array('war', 'travel', 'sport'),
             // , 'edu', 'ent', 'money', 'travel', 'gupiao', 'lady'),
             i2: 2,
+            saveDataResult: '',
         };
     }
 
     componentDidMount() {
         this.getMoviesFromApiAsync();           //每次创建的时候自动加载1次
+
     }
 
     getMoviesFromApiAsync() {       //Http异步请求
@@ -65,12 +68,31 @@ export default class ComNews extends Component {
             });
     };
 
+    saveHistory(data) {
+        var result2 = '';
+        var _this = this;
+        AsyncStorage.getItem('history', function (errs, result) {//读取方法
+            if (!errs) {   //TODO:错误处理
+                result2 = result;
+                console.log('result2 = ' + result2);
+                AsyncStorage.setItem('history', result2 + ',' + data, function (errs) {//存储方法
+                    if (errs)       //TODO:错误处理
+                        console.log('存储错误');
+                    else
+                        console.log('存储成功');
+                });
+            }
+            else
+                console.log('读取失败');
+        });
+    }
+
     render() {                  //onReusme
         return (
             <View style={styles.container}>
                 <Image style={{flex: 1,}}
                        source={{uri: 'http://appserver.m.bing.net/BackgroundImageService/TodayImageService.svc/GetTodayImage?dateOffset=0&urlEncodeHeaders=true&osName=windowsPhone&osVersion=8.10&orientation=480x800&deviceName=WP8&mkt=en-US'}}>
-                    <ScrollView tabLabel="战争"
+                    <ScrollView tabLabel="军事"
                                 contentContainerStyle={styles.contentContainer}>
                         <ListView
                             style={{margin: 4}}
@@ -89,8 +111,9 @@ export default class ComNews extends Component {
                                         <Text style={{color: "#cef4e3", flexWrap: 'wrap'}}
                                               onPress={() => {
                                                   this.refs.toast.show('文章内容：' + rowData.docurl);
+                                                  this.saveHistory(rowData.docurl)
                                                   DeviceEventEmitter.emit('userNameDidChange', rowData.docurl);
-                                                  //挪到TabNavi的    componentDidMount方法中去了
+                                                  //挪到TabNavi的componentDidMount方法中去了
                                                   {/* const {navigator} = this.props;
                                                    if (navigator) {
                                                    navigator.push({

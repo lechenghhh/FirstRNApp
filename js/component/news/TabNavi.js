@@ -107,7 +107,7 @@ export default class TabNavi extends Component {
                     </TabNavigator.Item>
                     <TabNavigator.Item
                         selected={this.state.selectedTab === 'tech'}
-                        title="教 育"
+                        title="旅 游"
                         renderIcon={() =>
                             <Image style={styles.img}
                                    source={{uri: 'http://www.easyicon.net/api/resizeApi.php?id=1171940&size=96'}}/>}

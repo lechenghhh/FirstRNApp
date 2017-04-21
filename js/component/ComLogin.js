@@ -35,6 +35,7 @@ export default class ComLogin extends Component {
             str2: '',
             tv1: '',
             saveDataResult: '',
+            saveDataResult2: '111',
         }
     }
 
@@ -95,9 +96,7 @@ export default class ComLogin extends Component {
                     value={this.state.str2}/>
 
                 <Text style={styles.welcome} onPress={() => {
-                    var keyName = 'myname';        //存储数据的方法
-                    var keyValue = this.state.str2;
-                    AsyncStorage.setItem(keyName, keyValue, function (errs) {
+                    AsyncStorage.setItem('myname', this.state.str2, function (errs) {//存储方法
                         if (errs)       //TODO:错误处理
                             console.log('存储错误');
                         else
@@ -106,19 +105,31 @@ export default class ComLogin extends Component {
                 }}>存储</Text>
                 <Text style={{color: '#f4f4f0',}}>{this.state.str2}获取的结果是：{this.state.tv1}</Text>
                 <Text style={styles.welcome} onPress={() => {
-                    var keyName = 'myname';         //读取数据的方法
                     var _this = this;
-                    AsyncStorage.getItem(keyName, function (errs, result) {
+                    AsyncStorage.getItem('myname', function (errs, result) {//读取方法
                         if (!errs) {                        //TODO:错误处理
-                            console.log('result = ' + result);
                             _this.setState({
                                 saveDataResult: result,
-                            })
+                            });
+                            console.log('result = ' + result);
                         }
                         else
                             console.log('读取失败');
                     });
                 }}>读取:{this.state.saveDataResult}</Text>
+                <Text style={styles.welcome} onPress={() => {
+                    var _this = this;
+                    AsyncStorage.getItem('history', function (errs, result) {//读取方法
+                        if (!errs) {                        //TODO:错误处理
+                            _this.setState({
+                                saveDataResult2: result,
+                            });
+                            console.log('result = ' + result);
+                        }
+                        else
+                            console.log('读取失败');
+                    });
+                }}>读取2:{this.state.saveDataResult2}</Text>
             </View>
         );
     }

@@ -33,7 +33,7 @@ export default class ComNewsB extends Component {
         super(props)
         this.state = {
             dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),                             //list数据源2
-            type: 'tech',
+            type: 'travel',
             jsonStr: '',
             str2: new Array('war', 'tech', 'sport'),
             // , 'edu', 'ent', 'money', 'travel', 'gupiao', 'lady'),
@@ -75,7 +75,7 @@ export default class ComNewsB extends Component {
             <View style={styles.container}>
                 <Image style={{flex: 1,}}
                        source={{uri: 'http://appserver.m.bing.net/BackgroundImageService/TodayImageService.svc/GetTodayImage?dateOffset=0&urlEncodeHeaders=true&osName=windowsPhone&osVersion=8.10&orientation=480x800&deviceName=WP8&mkt=en-US'}}>
-                    <ScrollView tabLabel="战争"
+                    <ScrollView tabLabel="科技"
                                 contentContainerStyle={styles.contentContainer}>
                         <ListView
                             style={{margin: 4}}
