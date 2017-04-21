@@ -25,7 +25,7 @@ import ComNewsB from './ComNewsB'
 import ComNewsC from './ComNewsC'
 import ComWebView from './ComWebView'
 
-export default class HomeUI extends Component {
+export default class TabNavi extends Component {
     constructor(props) {
         super(props);           //这一句不能省略，照抄即可
         this.state = {

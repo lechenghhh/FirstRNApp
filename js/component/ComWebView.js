@@ -12,26 +12,22 @@ import {
 
 const {width, height} = Dimensions.get('window');
 
-const url = "http://www.58.com";
 export default class ComWebView extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            getIntent: '',
+            // getIntent: 'http://m.hao123.com',
         }
     }
 
-    componentDidMount() {           //获取上个界面的传值
-        this.setState({
-            getIntent: this.props.intentNews,
-        });
+    static defaultProps = {
+        intentNews: 'http://m.hao123.com'
     }
-
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={{flex:1,}}>
                 <Text style={{backgroundColor: '#F43E06', color: "#ffffff", padding: 2, fontSize: 18,}}
                       onPress={() => {
                           const {navigator} = this.props;
@@ -42,7 +38,7 @@ export default class ComWebView extends Component {
                 <WebView
                     ref={'WEBVIEW_REF'}
                     style={{width: width, height: height - 20, backgroundColor: 'gray'}}
-                    source={{uri: this.state.getIntent, method: 'GET'}}
+                    source={{uri: this.props.intentNews, method: 'GET'}}
                     startInLoadingState={true}
                     domStorageEnabled={true}
                     javaScriptEnabled={true}
@@ -50,22 +46,16 @@ export default class ComWebView extends Component {
                 />
                 <View style={{flexDirection: 'row'}}>
                     <View style={styles.ViewForTextStyle}>
-                        <Text style={{
-                            color: "#ffffff", padding: 2, fontSize: 24, flex: 1, justifyContent: 'center',
-                        }}
+                        <Text style={styles.textStyle}
                               onPress={() => {
-                                  this.refs[WEBVIEW_REF].goBack();
-                              }}>{' <-'}</Text>
+                                  this.refs['WEBVIEW_REF'].goBack();
+                              }}>{'<-'}</Text>
                     </View>
                     <View style={styles.ViewForTextStyle}>
-                        <Text style={{
-                            color: "#ffffff", padding: 2, fontSize: 24, flex: 1, justifyContent: 'center',
-                        }}
+                        <Text style={styles.textStyle}
                               onPress={() => {
-                                  this.refs[WEBVIEW_REF].goForward();
-                                  {/*this.refs[WEBVIEW_REF].*/
-                                  }
-                              }}>{' ->'}</Text>
+                                  this.refs['WEBVIEW_REF'].goForward();
+                              }}>{'->'}</Text>
                     </View>
                 </View>
             </View>
@@ -74,8 +64,8 @@ export default class ComWebView extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
+    textStyle: {
+        color: "#ffffff", paddingLeft: 32,paddingRight:32, fontSize: 24, flex: 1, justifyContent: 'center',
     },
     ViewForTextStyle: {
         flex: 1,

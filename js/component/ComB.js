@@ -59,6 +59,7 @@ export default class ComB extends Component {
             </View>
         );
     }
+
 }
 
 const styles = StyleSheet.create({
