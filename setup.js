@@ -29,14 +29,16 @@ import ComHttp from './js/component/ComHttp';
 import ComLifeCycle from './js/component/ComLifeCycle';
 import ComListView from './js/component/ComListView';
 import ComLogin from './js/component/ComLogin';
-import ComNews from './js/component/ComNews'
+import ComNews from './js/component/news/ComNews'
 import ComWebView from './js/component/ComWebView'
 import ComDParent from './js/component/ComDParent'
 import ModalDemo from './js/test/ModalDemo'
 import FetchG from './js/test/FetchG'
 import TableView from './js/test/TableView'
-import TabNavi from './js/component/TabNavi'
-import Splash from './js/component/Splash'
+import TabNavi from './js/component/news/TabNavi'
+import Splash from './js/component/news/Splash'
+import History from './js/component/news/History'
+import Collect from './js/component/news/Collect'
 
 export default class setup extends Component {
     constructor(props) {
@@ -73,9 +75,9 @@ export default class setup extends Component {
                             case 'ComLogin':
                                 return (<ComLogin navigator={nav} title="ComLogin"/>);
                             case 'ComNews':
-                                return (<ComNews {...route.params}navigator={nav} title="ComNews"/>);
+                                return (<ComNews {...route.params} navigator={nav} title="ComNews"/>);
                             case 'ComWebView':
-                                return (<ComWebView {...route.params}navigator={nav} title="ComWebView"/>);
+                                return (<ComWebView {...route.params} navigator={nav} title="ComWebView"/>);
                             case 'ModalDemo':
                                 return (<ModalDemo navigator={nav} title="ModalDemo"/>);
                             case 'FetchG':
@@ -88,6 +90,11 @@ export default class setup extends Component {
                                 return (<TabNavi {...route.params} navigator={nav} title="TabNavi"/>);
                             case 'Splash':
                                 return (<Splash navigator={nav} title="Splash"/>);
+                            case 'History':
+                                return (<History navigator={nav} title="History"/>);
+                            case 'Collect':
+                                return (<Collect navigator={nav} title="Collect"/>);
+
                         }
                     }}
 

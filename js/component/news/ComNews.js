@@ -3,11 +3,14 @@
  * https://github.com/facebook/react-native
  * @flow
  */
-/*      api文档地址：
- *http://wangyi.butterfly.mopaasapp.com
- * 处理一些背景透明的童鞋,可以试试这两句代码
- backgroundColor:'transparent',或者backgroundColor:'rgba(0,0,0,0)',
- */
+
+//      api文档地址：
+//http://wangyi.butterfly.mopaasapp.com
+//Toast使用说明
+//http://www.devio.org/2016/09/13/%E4%B8%80%E6%AC%BE%E7%AE%80%E5%8D%95%E6%98%93%E7%94%A8%E7%9A%84-Toast-%E7%BB%84%E4%BB%B6-%E6%94%AF%E6%8C%81-Android&iOS/
+//React Native学习之DeviceEventEmitter传值
+//http://www.cnblogs.com/Milo-CTO/p/5957218.html
+//
 import React, {Component} from 'react';
 import {
     AppRegistry,
@@ -19,21 +22,20 @@ import {
     Image,
     TextInput,
     TouchableHighlight,
-    AlertIOS,
     DeviceEventEmitter,
+    AlertIOS,
 } from 'react-native';
 import Toast, {DURATION} from 'react-native-easy-toast'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
-import ComA from '../component/ComA'
-import ComB from '../component/ComC'
-import ComWebView from '../component/ComWebView'
+import ComWebView from  '../ComWebView'
 
-export default class ComNewsB extends Component {
+export default class ComNews extends Component {
+
     constructor(props) {
         super(props)
         this.state = {
             dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),                             //list数据源2
-            type: 'tech',
+            type: 'war',
             jsonStr: '',
             str2: new Array('war', 'tech', 'sport'),
             // , 'edu', 'ent', 'money', 'travel', 'gupiao', 'lady'),
@@ -63,13 +65,6 @@ export default class ComNewsB extends Component {
             });
     };
 
-    start2(data) {
-        {
-            this.refs.toast.show('文章内容：' + data.docurl);
-            DeviceEventEmitter.emit('userNameDidChange', data.docurl);
-        }
-    }
-
     render() {                  //onReusme
         return (
             <View style={styles.container}>
@@ -92,15 +87,32 @@ export default class ComNewsB extends Component {
                                         justifyContent: 'space-around'
                                     }}>
                                         <Text style={{color: "#cef4e3", flexWrap: 'wrap'}}
-                                              onPress={() => this.start2(rowData)
-                                              }>{rowData.title}</Text>
+                                              onPress={() => {
+                                                  this.refs.toast.show('文章内容：' + rowData.docurl);
+                                                  DeviceEventEmitter.emit('userNameDidChange', rowData.docurl);
+                                                  //挪到TabNavi的    componentDidMount方法中去了
+                                                  {/* const {navigator} = this.props;
+                                                   if (navigator) {
+                                                   navigator.push({
+                                                   name: 'ComWebView',
+                                                   params: {
+                                                   intentNews: rowData.docurl,
+                                                   },
+                                                   })
+                                                   }*/
+                                                  }
+                                              }}>{rowData.title}</Text>
                                         <Text style={{color: "#82a1a8"}}>{rowData.time}</Text>
                                     </View>
                                 </View>
                             }/>
+                        {/*<Text>请求结果是：{this.state.jsonStr}</Text>*/}
                     </ScrollView>
                 </Image>
-                <Toast ref="toast" style={{backgroundColor: '#e4ff31', borderRadius: 10}}/>
+                <Toast ref="toast" style={{
+                    backgroundColor: '#f4485f', borderRadius: 10,
+                    marginBottom: 50,
+                }}/>
             </View>
         );
     }

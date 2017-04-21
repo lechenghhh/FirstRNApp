@@ -23,7 +23,7 @@ import TabNavigator from 'react-native-tab-navigator';
 import ComNews from './ComNews'
 import ComNewsB from './ComNewsB'
 import ComNewsC from './ComNewsC'
-import ComWebView from './ComWebView'
+import ComWebView from '../ComWebView'
 
 export default class TabNavi extends Component {
     constructor(props) {
@@ -54,15 +54,35 @@ export default class TabNavi extends Component {
     render() {
         return (
             <View style={{flex: 1,}}>
-                <Text style={{backgroundColor: '#F43E06',  color: "#ffffff", padding: 5,}}
-                      onPress={() => {
-                          const {navigator} = this.props;
-                          if (navigator) {
-                              navigator.push({
-                                  name: 'Main',
-                              })
-                          }
-                      }}>网易新闻 - {this.state.type}</Text>
+                <View style={{flexDirection: 'row',}}>
+                    <Text style={{flex: 1, backgroundColor: '#F43E06', color: "#ffffff", padding: 5,}}
+                          onPress={() => {
+                              const {navigator} = this.props;
+                              if (navigator) {
+                                  navigator.push({
+                                      name: 'Main',
+                                  })
+                              }
+                          }}>网易新闻 - {this.state.type}</Text>
+                    <Text style={{width: 48, backgroundColor: '#F43E06', color: "#ffffff", padding: 5,}}
+                          onPress={() => {
+                              const {navigator} = this.props;
+                              if (navigator) {
+                                  navigator.push({
+                                      name: 'History',
+                                  })
+                              }
+                          }}>历史</Text>
+                    <Text style={{width: 48, backgroundColor: '#F43E06', color: "#ffffff", padding: 5,}}
+                          onPress={() => {
+                              const {navigator} = this.props;
+                              if (navigator) {
+                                  navigator.push({
+                                      name: 'Collect',
+                                  })
+                              }
+                          }}>收藏</Text>
+                </View>
                 <TabNavigator
                     tabBarStyle={{height: 52}}
                     renderScene={(route, nav) => {
