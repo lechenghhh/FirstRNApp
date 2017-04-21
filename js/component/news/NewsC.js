@@ -24,7 +24,7 @@ import {
 import Toast, {DURATION} from 'react-native-easy-toast'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 
-export default class ComNewsC extends Component {
+export default class NewsC extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -104,7 +104,11 @@ export default class ComNewsC extends Component {
                                             this.saveHistory(rowData.docurl);
                                             DeviceEventEmitter.emit('userNameDidChange', rowData.docurl);
                                         }}>{rowData.title}</Text>
-                                        <Text style={{color: "#82a1a8"}}>{rowData.time}</Text>
+                                        <Text style={{
+                                            flex: 1,
+                                            color: "#82a1a8",
+                                            textAlign: 'right'
+                                        }}>{rowData.time}</Text>
                                     </View>
                                 </View>
                             }/>

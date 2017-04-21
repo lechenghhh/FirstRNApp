@@ -29,7 +29,7 @@ import ComA from '../ComA'
 import ComB from '../ComC'
 import ComWebView from '../ComWebView'
 
-export default class ComNewsB extends Component {
+export default class NewsB extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -115,7 +115,7 @@ export default class ComNewsB extends Component {
                                         <Text style={{color: "#cef4e3", flexWrap: 'wrap'}}
                                               onPress={() => this.start2(rowData)
                                               }>{rowData.title}</Text>
-                                        <Text style={{color: "#82a1a8"}}>{rowData.time}</Text>
+                                        <Text style={{flex:1,color: "#82a1a8",textAlign:'right'}}>{rowData.time}</Text>
                                     </View>
                                 </View>
                             }/>

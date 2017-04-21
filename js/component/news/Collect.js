@@ -61,7 +61,7 @@ export default class Collect extends Component {
                               }
                           }}>{' <- 返回'}</Text>
                 </View>
-                <Text style={styles.instructions}>新闻收藏列表</Text>
+                <Text style={styles.instructions}>我的收藏</Text>
                 <ListView
                     dataSource={this.state.dataSource}
                     renderRow={(rowData) =>

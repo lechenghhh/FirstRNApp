@@ -31,7 +31,7 @@ import ScrollableTabView from 'react-native-scrollable-tab-view'
 import ComWebView from  '../ComWebView'
 import MyAS from './MyAS'
 
-export default class ComNews extends Component {
+export default class News extends Component {
 
     constructor(props) {
         super(props)
@@ -113,10 +113,9 @@ export default class ComNews extends Component {
                                               onPress={() => {
                                                   this.refs.toast.show('文章内容：' + rowData.docurl);
                                                   this.saveHistory(rowData.docurl);
-                                                  {/*MyAS.saveHistory(rowData.docurl);*/}
                                                   DeviceEventEmitter.emit('userNameDidChange', rowData.docurl);
                                               }}>{rowData.title}</Text>
-                                        <Text style={{color: "#82a1a8"}}>{rowData.time}</Text>
+                                        <Text style={{flex:1,color: "#82a1a8",textAlign:'right'}}>{rowData.time}</Text>
                                     </View>
                                 </View>
                             }/>

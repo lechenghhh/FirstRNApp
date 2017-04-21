@@ -61,7 +61,7 @@ export default class History extends Component {
                               }
                           }}>{' <- 返回'}</Text>
                 </View>
-                <Text style={styles.instructions}>新闻收藏列表</Text>
+                <Text style={styles.instructions}>浏览历史</Text>
                 <ListView
                     dataSource={this.state.dataSource}
                     renderRow={(rowData) =>
