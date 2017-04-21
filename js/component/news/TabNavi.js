@@ -5,6 +5,7 @@
  <View style={[styles.flex, styles.center, {backgroundColor: '#ffff0044'}]}>
  <Text style={{fontSize: 30}}>设置</Text>
  </View>
+ http://www.voidcn.com/blog/zhukui66/article/p-5762769.html
  *  npm install react-native-tab-navigator --save */
 import React, {Component} from 'react';
 import {
@@ -63,7 +64,7 @@ export default class TabNavi extends Component {
                                       name: 'Main',
                                   })
                               }
-                          }}>网易新闻 - {this.state.type}</Text>
+                          }}>网易新闻 - {this.state.selectedTab}</Text>
                     <Text style={{width: 48, backgroundColor: '#F43E06', color: "#ffffff", padding: 6,}}
                           onPress={() => {
                               const {navigator} = this.props;
@@ -84,14 +85,7 @@ export default class TabNavi extends Component {
                           }}>收藏</Text>
                 </View>
                 <TabNavigator
-                    tabBarStyle={{height: 52}}
-                    renderScene={(route, nav) => {
-                        let Component = route.component;
-                        switch (route.name) {
-                            case 'ComWebView':
-                                return <ComWebView {...route.params} navigator={nav} title="ComWebView"/>
-                        }
-                    }}>
+                    tabBarStyle={{height: 52}}>
                     <TabNavigator.Item
                         selected={this.state.selectedTab === 'war'}
                         title="军 事" //Tab文字
