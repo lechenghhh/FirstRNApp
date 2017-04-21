@@ -22,9 +22,7 @@ export default class Splash extends Component {
     }
 
     componentDidMount() {
-        this.timer = setTimeout(
-            () => {
-                this.setState({content: '我是定时器打印的内容。。。'})
+        this.timer = setTimeout(() => {
                 const {navigator} = this.props;
                 if (navigator) {
                     navigator.push({
@@ -37,10 +35,8 @@ export default class Splash extends Component {
         );
     }
 
-    componentWillUnmount() {
-        // 如果存在this.timer，则使用clearTimeout清空。
-        // 如果你使用多个timer，那么用多个变量，或者用个数组来保存引用，然后逐个clear
-        this.timer && clearTimeout(this.timer);
+    componentWillUnmount() {                   //如果存在this.timer，则使用clearTimeout清空。
+        this.timer && clearTimeout(this.timer);//如果你使用多个timer，那么用多个变量，或者用个数组来保存引用，然后逐个clear
     }
 
     render() {
@@ -49,7 +45,7 @@ export default class Splash extends Component {
                 <Text style={styles.welcome}
                       onPress={() => {
 
-                      }}>欢迎来到新闻APP+{this.state.content}</Text>
+                      }}>欢迎来到新闻APP</Text>
                 <Toast ref="toast" style={{backgroundColor: '#3d8afe', borderRadius: 10}}/>
             </View>
         );
