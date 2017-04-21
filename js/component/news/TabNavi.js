@@ -55,7 +55,7 @@ export default class TabNavi extends Component {
         return (
             <View style={{flex: 1,}}>
                 <View style={{flexDirection: 'row',}}>
-                    <Text style={{flex: 1, backgroundColor: '#F43E06', color: "#ffffff", padding: 5,}}
+                    <Text style={{flex: 1, backgroundColor: '#F43E06', color: "#ffffff", padding: 6,}}
                           onPress={() => {
                               const {navigator} = this.props;
                               if (navigator) {
@@ -64,7 +64,7 @@ export default class TabNavi extends Component {
                                   })
                               }
                           }}>网易新闻 - {this.state.type}</Text>
-                    <Text style={{width: 48, backgroundColor: '#F43E06', color: "#ffffff", padding: 5,}}
+                    <Text style={{width: 48, backgroundColor: '#F43E06', color: "#ffffff", padding: 6,}}
                           onPress={() => {
                               const {navigator} = this.props;
                               if (navigator) {
@@ -73,7 +73,7 @@ export default class TabNavi extends Component {
                                   })
                               }
                           }}>历史</Text>
-                    <Text style={{width: 48, backgroundColor: '#F43E06', color: "#ffffff", padding: 5,}}
+                    <Text style={{width: 48, backgroundColor: '#F43E06', color: "#ffffff", padding: 6,}}
                           onPress={() => {
                               const {navigator} = this.props;
                               if (navigator) {

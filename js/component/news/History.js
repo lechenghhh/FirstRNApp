@@ -53,7 +53,7 @@ export default class History extends Component {
         return (
             <View style={{flex: 1,}}>
                 <View style={{flexDirection: 'row',}}>
-                    <Text style={{backgroundColor: '#F43E06', flex: 1, color: "#ffffff", padding: 2,}}
+                    <Text style={{backgroundColor: '#F43E06', flex: 1, color: "#ffffff", padding: 6,}}
                           onPress={() => {
                               const {navigator} = this.props;
                               if (navigator) {
