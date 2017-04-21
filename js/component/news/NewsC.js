@@ -14,6 +14,7 @@ import {
     View,
     ScrollView,
     ListView,
+    AsyncStorage,
     Image,
     TextInput,
     TouchableHighlight,

@@ -18,6 +18,7 @@ import {
     ListView,
     Image,
     TextInput,
+    AsyncStorage,
     TouchableHighlight,
     AlertIOS,
     DeviceEventEmitter,
@@ -85,7 +86,7 @@ export default class ComNewsB extends Component {
     start2(data) {
         {
             this.refs.toast.show('文章内容：' + data.docurl);
-            this.saveHistory(rowData.docurl);
+            this.saveHistory(data);
             DeviceEventEmitter.emit('userNameDidChange', data.docurl);
         }
     }

@@ -21,6 +21,7 @@ export default class History extends Component {
         this.state = {
             dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),                             //list数据源2
         };
+        this._genRows();
     }
 
     _genRows() {
@@ -60,10 +61,7 @@ export default class History extends Component {
                               }
                           }}>{' <- 返回'}</Text>
                 </View>
-                <Text style={styles.welcome}
-                      onPress={() => {
-                          this._genRows();
-                      }}>新闻收藏，刷新列表</Text>
+                <Text style={styles.instructions}>新闻收藏列表</Text>
                 <ListView
                     dataSource={this.state.dataSource}
                     renderRow={(rowData) =>
@@ -88,6 +86,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5FCFF',
     },
     welcome: {
+        backgroundColor: '#e0e1d9',
         fontSize: 20,
         textAlign: 'center',
         margin: 10,
@@ -96,7 +95,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#8892d4',
         fontSize: 22,
         textAlign: 'center',
-        color: '#f4003c',
+        color: '#f2f4f4',
         marginBottom: 5,
     },
 });
