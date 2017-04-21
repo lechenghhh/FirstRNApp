@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import Toast, {DURATION} from 'react-native-easy-toast'
 
-
 export default class Splash extends Component {
 
     constructor(props) {
@@ -44,7 +43,6 @@ export default class Splash extends Component {
             <View style={styles.container}>
                 <Text style={styles.welcome}
                       onPress={() => {
-
                       }}>欢迎来到新闻APP</Text>
                 <Toast ref="toast" style={{backgroundColor: '#3d8afe', borderRadius: 10}}/>
             </View>
