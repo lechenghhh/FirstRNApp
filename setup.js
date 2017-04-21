@@ -52,7 +52,6 @@ export default class setup extends Component {
     render() {
         return (
             <View style={styles.container}>
-
                 <Navigator
                     initialRoute={{name: "Main",}}
                     renderScene={(route, nav) => {
@@ -94,12 +93,9 @@ export default class setup extends Component {
                                 return (<History navigator={nav} title="History"/>);
                             case 'Collect':
                                 return (<Collect navigator={nav} title="Collect"/>);
-
                         }
                     }}
-
                 />
-
             </View>
         );
     }
