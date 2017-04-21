@@ -29,7 +29,7 @@ import ComHttp from './js/component/ComHttp';
 import ComLifeCycle from './js/component/ComLifeCycle';
 import ComListView from './js/component/ComListView';
 import ComLogin from './js/component/ComLogin';
-import ComNews from './js/component/news/ComNews'
+import News from './js/component/news/News'
 import ComWebView from './js/component/ComWebView'
 import ComDParent from './js/component/ComDParent'
 import ModalDemo from './js/test/ModalDemo'
@@ -74,8 +74,8 @@ export default class setup extends Component {
                                 return (<ComListView navigator={nav} title="ComListView"/>);
                             case 'ComLogin':
                                 return (<ComLogin navigator={nav} title="ComLogin"/>);
-                            case 'ComNews':
-                                return (<ComNews {...route.params} navigator={nav} title="ComNews"/>);
+                            case 'News':
+                                return (<News {...route.params} navigator={nav} title="News"/>);
                             case 'ComWebView':
                                 return (<ComWebView {...route.params} navigator={nav} title="ComWebView"/>);
                             case 'ModalDemo':

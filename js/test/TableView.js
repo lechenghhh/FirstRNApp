@@ -27,7 +27,7 @@ import {
 } from 'react-native';
 import ComA from '../component/ComA'
 import ComB from '../component/ComC'
-import ComNews from '../component/news/ComNews'
+import ComNews from '../component/news/News'
 import ScrollableTabView, {DURATION} from 'react-native-scrollable-tab-view'
 
 

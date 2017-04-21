@@ -20,9 +20,9 @@ import {
     DeviceEventEmitter,
 } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
-import ComNews from './ComNews'
-import ComNewsB from './ComNewsB'
-import ComNewsC from './ComNewsC'
+import ComNews from './News'
+import ComNewsB from './NewsB'
+import ComNewsC from './NewsC'
 import ComWebView from '../ComWebView'
 
 export default class TabNavi extends Component {

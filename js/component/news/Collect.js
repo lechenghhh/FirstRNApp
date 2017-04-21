@@ -19,7 +19,7 @@ export default class Collect extends Component {
         this.state = {
             hello: '',
             dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}), //list数据源2
-            strArr: new Array('ComA', 'ComB', 'ComC', 'ComDParent', 'ComHttp',
+            strArr: new Array('收藏', 'ComB', 'ComC', 'ComDParent', 'ComHttp',
                 'ComLifeCycle', 'ComListView',),  }
     }
 
