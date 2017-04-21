@@ -40,6 +40,25 @@ export default class ComNewsC extends Component {
         this.getMoviesFromApiAsync();           //每次创建的时候自动加载1次
     }
 
+    saveHistory(data) {
+        var result2 = '';
+        var _this = this;
+        AsyncStorage.getItem('history', function (errs, result) {//读取方法
+            if (!errs) {   //TODO:错误处理
+                result2 = result;
+                console.log('result2 = ' + result2);
+                AsyncStorage.setItem('history', result2 + ',' + data, function (errs) {//存储方法
+                    if (errs)       //TODO:错误处理
+                        console.log('存储错误');
+                    else
+                        console.log('存储成功');
+                });
+            }
+            else
+                console.log('读取失败');
+        });
+    }
+
     getMoviesFromApiAsync() {       //Http异步请求
         fetch('http://wangyi.butterfly.mopaasapp.com/news/api?type='
             + this.state.type
@@ -81,6 +100,7 @@ export default class ComNewsC extends Component {
                                     }}>
                                         <Text style={{color: "#cef4e3", flexWrap: 'wrap'}} onPress={() => {
                                             this.refs.toast.show('文章内容：' + rowData.docurl);
+                                            this.saveHistory(rowData.docurl);
                                             DeviceEventEmitter.emit('userNameDidChange', rowData.docurl);
                                         }}>{rowData.title}</Text>
                                         <Text style={{color: "#82a1a8"}}>{rowData.time}</Text>

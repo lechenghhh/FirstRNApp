@@ -29,6 +29,7 @@ import {
 import Toast, {DURATION} from 'react-native-easy-toast'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 import ComWebView from  '../ComWebView'
+import MyAS from './MyAS'
 
 export default class ComNews extends Component {
 
@@ -111,19 +112,9 @@ export default class ComNews extends Component {
                                         <Text style={{color: "#cef4e3", flexWrap: 'wrap'}}
                                               onPress={() => {
                                                   this.refs.toast.show('文章内容：' + rowData.docurl);
-                                                  this.saveHistory(rowData.docurl)
+                                                  this.saveHistory(rowData.docurl);
+                                                  {/*MyAS.saveHistory(rowData.docurl);*/}
                                                   DeviceEventEmitter.emit('userNameDidChange', rowData.docurl);
-                                                  //挪到TabNavi的componentDidMount方法中去了
-                                                  {/* const {navigator} = this.props;
-                                                   if (navigator) {
-                                                   navigator.push({
-                                                   name: 'ComWebView',
-                                                   params: {
-                                                   intentNews: rowData.docurl,
-                                                   },
-                                                   })
-                                                   }*/
-                                                  }
                                               }}>{rowData.title}</Text>
                                         <Text style={{color: "#82a1a8"}}>{rowData.time}</Text>
                                     </View>
