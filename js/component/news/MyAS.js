@@ -1,5 +1,6 @@
 /**
  * Created by 乐城 on 2017/4/21.
+ * AsyncStorge封装尝试
  */
 import React, {Component} from 'react';
 import {
@@ -16,6 +17,7 @@ import {
     AsyncStorage,
     AlertIOS,
 } from 'react-native';
+
 export default class MyAS {
     saveHistory(data) {
         var result2 = '';
