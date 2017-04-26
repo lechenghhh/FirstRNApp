@@ -29,12 +29,13 @@ import ComHttp from './js/component/ComHttp';
 import ComLifeCycle from './js/component/ComLifeCycle';
 import ComListView from './js/component/ComListView';
 import ComLogin from './js/component/ComLogin';
-import News from './js/component/news/News'
 import ComWebView from './js/component/ComWebView'
 import ComDParent from './js/component/ComDParent'
+import ComVP from './js/component/ComVP'
 import ModalDemo from './js/test/ModalDemo'
 import FetchG from './js/test/FetchG'
 import TableView from './js/test/TableView'
+import News from './js/component/news/News'
 import TabNavi from './js/component/news/TabNavi'
 import Splash from './js/component/news/Splash'
 import History from './js/component/news/History'
@@ -93,6 +94,8 @@ export default class setup extends Component {
                                 return (<History navigator={nav} title="History"/>);
                             case 'Collect':
                                 return (<Collect navigator={nav} title="Collect"/>);
+                            case 'ComVP':
+                                return (<ComVP navigator={nav} title="ComVP"/>);
                         }
                     }}
                 />
