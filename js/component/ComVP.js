@@ -25,7 +25,7 @@ export default class ComVP extends Component {
     //         dataSource: ds.cloneWithRows(this._genRows()),
     //     };
     // }
-    //
+    ////
     // _genRows() {
     //     const dataBlob = [];
     //     for (let i = 0; i < 5; i++) {

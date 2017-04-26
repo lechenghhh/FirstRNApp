@@ -25,7 +25,7 @@ import {
     TextInput,
     AsyncStorage,
 } from 'react-native';
-// import ComHttp from './ComHttp'
+import MyAS from './MyAS'
 
 export default class ComLogin extends Component {
     constructor(props) {
@@ -37,6 +37,7 @@ export default class ComLogin extends Component {
             saveDataResult: '',
             saveDataResult2: '111',
         }
+        this.myAS = new MyAS();
     }
 
     saveDate() {
@@ -96,26 +97,12 @@ export default class ComLogin extends Component {
                     value={this.state.str2}/>
 
                 <Text style={styles.welcome} onPress={() => {
-                    AsyncStorage.setItem('myname', this.state.str2, function (errs) {//存储方法
-                        if (errs)       //TODO:错误处理
-                            console.log('存储错误');
-                        else
-                            console.log('存储成功');
-                    });
+                    this.myAS.setAS("myname",this.state.str2);
                 }}>存储</Text>
                 <Text style={{color: '#f4f4f0',}}>{this.state.str2}获取的结果是：{this.state.tv1}</Text>
                 <Text style={styles.welcome} onPress={() => {
                     var _this = this;
-                    AsyncStorage.getItem('myname', function (errs, result) {//读取方法
-                        if (!errs) {                        //TODO:错误处理
-                            _this.setState({
-                                saveDataResult: result,
-                            });
-                            console.log('result = ' + result);
-                        }
-                        else
-                            console.log('读取失败');
-                    });
+                    this.myAS.getAS(_this, "myname");
                 }}>读取:{this.state.saveDataResult}</Text>
                 <Text style={styles.welcome} onPress={() => {
                     var _this = this;

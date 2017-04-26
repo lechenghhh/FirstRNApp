@@ -14,6 +14,7 @@ import {
     View,
     TouchableHighlight,
 } from 'react-native';
+import MyHttp from '../utils/MyHttp'
 
 export default class ComHttp extends Component {
     constructor(props) {
@@ -31,6 +32,7 @@ export default class ComHttp extends Component {
             // },
             jsonStr: '',
         };
+        this.myHttp = new MyHttp();
     }
 
     componentDidMount() {
