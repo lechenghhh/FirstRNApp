@@ -41,7 +41,7 @@ export default class History extends Component {
                 })
             }
             else {
-                console.log('读取失败');
+                console.log('读取失败!');
                 _this.setState({
                     dataSource: _this.state.dataSource.cloneWithRows(arr2),
                 })
